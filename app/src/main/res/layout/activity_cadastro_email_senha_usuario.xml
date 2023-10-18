@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".CadastroUsuario.CadastroEmailSenhaUsuario">
+
+    <LinearLayout
+        android:id="@+id/txtEntreConta"
+        android:layout_width="450dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            app:srcCompat="@drawable/logotec" />
+
+        <TextView
+            android:id="@+id/txtEmailUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:textSize="18dp"
+            android:text="Email"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/linearEmail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/edittext_background"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/iptEmailUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:inputType="textWebEmailAddress"
+                android:paddingStart="8dp"
+                android:textColor="@color/black"
+                android:textColorHint="#CCCCCC"
+                android:textCursorDrawable="@drawable/cursor_color" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtFeedback1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/txtSenhaUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textSize="18dp"
+            android:text="Senha"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/linearSenha"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/edittext_background"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/iptSenhaUsuario"
+                android:layout_width="410dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:paddingStart="8dp"
+                android:textColor="@color/black"
+                android:textColorHint="#CCCCCC"
+                android:textCursorDrawable="@drawable/cursor_color" />
+
+            <ImageView
+                android:id="@+id/mostrarSenha"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.81"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.543"
+                app:srcCompat="@drawable/olhofechado" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtValidaSenhaUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• Deve conter no mínimo 8 caracteres."
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/txtValidaSenhaUsuario2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• Deve conter pelo menos uma letra maiúscula."
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/txtValidaSenhaUsuario3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• Deve conter um número, uma letra e um caractere especial."
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtConfirmar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textSize="18dp"
+            android:text="Confirmar Senha"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/linearConfirmar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/edittext_background"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/iptConfirmarUsuario"
+                android:layout_width="400dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:paddingStart="8dp"
+                android:textColor="@color/black"
+                android:textColorHint="#CCCCCC"
+                android:textCursorDrawable="@drawable/cursor_color" />
+
+            <ImageView
+                android:id="@+id/mostrarConfirmar"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.81"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.543"
+                app:srcCompat="@drawable/olhofechado" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtperfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/txtCadastroUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:textSize="18dp"
+            android:gravity="center"
+            android:text="Quer cadastrar uma empresa? Entre agora!"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnContinuar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginVertical="40dp"
+            android:background="@drawable/rounded_button"
+            android:onClick="cadastroOnClick"
+            android:text="Continuar"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:backgroundTint="@null" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/setaVoltar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:onClick="VoltarOnClick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.072"
+        app:srcCompat="@drawable/voltar_seta" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

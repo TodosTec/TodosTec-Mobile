@@ -1,0 +1,12 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <layer-list>
+            <item android:id="@android:id/background">
+                <shape android:shape="rectangle">
+                    <solid android:color="#7A7097" />
+                    <corners android:radius="32dp" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</selector>

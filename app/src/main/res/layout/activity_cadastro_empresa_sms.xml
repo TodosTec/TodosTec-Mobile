@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".CadastroEmpresa.CadastroEmpresaSMS">
+
+    <LinearLayout
+        android:id="@+id/txtEntreContaEmpresa"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            app:srcCompat="@drawable/logotec" />
+
+        <TextView
+            android:id="@+id/txtPerguntaEmpresa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:shadowDx="0"
+            android:shadowDy="1"
+            android:shadowRadius="3"
+            android:text=""
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txtSMS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:shadowDx="0"
+            android:shadowDy="1"
+            android:shadowRadius="3"
+            android:text="Código do SMS"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/iptDescricaoEmpresa"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/edittext_background"
+            android:ems="10"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:paddingStart="8dp"
+            android:textColorHint="#CCCCCC"
+            android:textCursorDrawable="@drawable/cursor_color" />
+
+        <TextView
+            android:id="@+id/txtFeedbackDescricao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/txtCadastroUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="70dp"
+            android:gravity="center"
+            android:text="Quer cadastrar um usuário? Entre agora!"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/EnviarSMSEmpresa"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/rounded_button"
+            android:text="Enviar SMS"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:backgroundTint="@null" />
+
+        <Button
+            android:id="@+id/btnContinuarEmpresa"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/rounded_button"
+            android:onClick="cadastroOnClick"
+            android:text="Continuar"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:backgroundTint="@null" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/setaVoltar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:onClick="VoltarOnClick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.072"
+        app:srcCompat="@drawable/voltar_seta" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
