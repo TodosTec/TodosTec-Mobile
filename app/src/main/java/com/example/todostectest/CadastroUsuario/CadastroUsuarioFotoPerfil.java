@@ -143,4 +143,7 @@ public class CadastroUsuarioFotoPerfil extends AppCompatActivity {
             }
         });
     }
+    public void VoltarOnClick(View view) {
+        finish();
+    }
 }

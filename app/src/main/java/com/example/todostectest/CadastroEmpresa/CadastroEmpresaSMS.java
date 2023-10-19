@@ -39,7 +39,7 @@ public class CadastroEmpresaSMS extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_empresa_sms);
         iptCódigoSMS = findViewById(R.id.iptDescricaoEmpresa);
-        txtSMS       = findViewById(R.id.txtSMS);
+        txtSMS       = findViewById(R.id.txtLink);
         txtRestante3 = findViewById(R.id.txtFeedbackDescricao);
         btnContinuar = findViewById(R.id.btnContinuarEmpresa);
         btnEnviarSMS = findViewById(R.id.EnviarSMSEmpresa);
