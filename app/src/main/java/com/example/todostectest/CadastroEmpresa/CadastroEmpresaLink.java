@@ -95,7 +95,6 @@ public class CadastroEmpresaLink extends AppCompatActivity {
                     intent.putExtra("Username", Username);
                     intent.putExtra("Telefone", Telefone);
                     startActivity(intent);
-
                 }
             }
         });
