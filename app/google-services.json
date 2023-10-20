@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "66592976655",
+    "firebase_url": "https://todostech-10a87-default-rtdb.firebaseio.com",
+    "project_id": "todostech-10a87",
+    "storage_bucket": "todostech-10a87.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:66592976655:android:6f4ee170abcbb07d7f187a",
+        "android_client_info": {
+          "package_name": "com.example.todostectest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWSsaMjTJ3U7KBIbleNOP9ZafQdixueFg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

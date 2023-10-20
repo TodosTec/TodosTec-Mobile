@@ -29,7 +29,6 @@ public class CadastroEmpresaLink extends AppCompatActivity {
     String NomeCompleto;
     String Username;
     String Telefone;
-    String SemFormatacaoTelefone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,6 @@ public class CadastroEmpresaLink extends AppCompatActivity {
         NomeCompleto = intent.getStringExtra("NomeCompleto");
         Username = intent.getStringExtra("Username");
         Telefone = intent.getStringExtra("Telefone");
-        SemFormatacaoTelefone = intent.getStringExtra("SemFormatacaoTelefone").substring(2);
 
         iptLink.addTextChangedListener(new TextWatcher() {
             @Override
@@ -94,6 +92,7 @@ public class CadastroEmpresaLink extends AppCompatActivity {
                     intent.putExtra("NomeCompleto", NomeCompleto);
                     intent.putExtra("Username", Username);
                     intent.putExtra("Telefone", Telefone);
+                    intent.putExtra("Link", iptLink.getText().toString());
                     startActivity(intent);
                 }
             }

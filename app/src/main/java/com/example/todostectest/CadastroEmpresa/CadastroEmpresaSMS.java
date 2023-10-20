@@ -118,7 +118,7 @@ public class CadastroEmpresaSMS extends AppCompatActivity {
                     }
                 }
                 if (isValid) {
-                    Intent intent = new Intent(CadastroEmpresaSMS.this, CadastroEmpresaDescricao.class);
+                    Intent intent = new Intent(CadastroEmpresaSMS.this, CadastroEmpresaLink.class);
                     intent.putExtra("EmailUsuario", EmailUsuario);
                     intent.putExtra("SenhaUsuario", SenhaUsuario);
                     intent.putExtra("NomeCompleto", NomeCompleto);

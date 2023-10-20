@@ -11,7 +11,6 @@ public class UserData {
     private int ncdgenero;
     private int ncdsexualidade;
     private String cdescricao;
-    private String clinksite;
     private String clinkfoto;
 
     public UserData(String cnome, String cusername, String csenha, String ctelefone, String cemail, int ncdpronome, int ncdgenero, int ncdsexualidade, String cdescricao, String clinkfoto) {
@@ -25,19 +24,5 @@ public class UserData {
         this.ncdsexualidade = ncdsexualidade;
         this.cdescricao = cdescricao;
         this.clinkfoto = clinkfoto;
-    }
-
-    public UserData(String cnome, String cusername, String csenha, String ctelefone, String cemail, int ncdpronome, int ncdgenero, int ncdsexualidade, String cdescricao, String clinksite, String clinkfoto) {
-        this.cnome = cnome;
-        this.cusername = cusername;
-        this.csenha = csenha;
-        this.ctelefone = ctelefone;
-        this.cemail = cemail;
-        this.ncdpronome = ncdpronome;
-        this.ncdgenero = ncdgenero;
-        this.ncdsexualidade = ncdsexualidade;
-        this.cdescricao = cdescricao;
-        this.clinkfoto = clinkfoto;
-        this.clinksite = clinksite;
     }
 }

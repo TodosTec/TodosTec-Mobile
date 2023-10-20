@@ -18,6 +18,11 @@ import com.example.todostectest.API.UserData;
 import com.example.todostectest.CadastroUsuario.CadastroDescricaoUsuario;
 import com.example.todostectest.CadastroUsuario.ConclusaoCadastroUsuario;
 import com.example.todostectest.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,6 +40,7 @@ public class CadastroEmpresaDescricao extends AppCompatActivity {
     String NomeCompleto;
     String Username;
     String Telefone;
+    String Link;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +56,7 @@ public class CadastroEmpresaDescricao extends AppCompatActivity {
         NomeCompleto = intent.getStringExtra("NomeCompleto");
         Username = intent.getStringExtra("Username");
         Telefone = intent.getStringExtra("Telefone");
+        Link = intent.getStringExtra("Link");
 
 
         iptDescricao.addTextChangedListener(new TextWatcher() {
@@ -99,7 +106,8 @@ public class CadastroEmpresaDescricao extends AppCompatActivity {
                             SenhaUsuario,
                             Telefone,
                             EmailUsuario,
-                            iptDescricao.getText().toString()
+                            iptDescricao.getText().toString(),
+                            Link
                     );
 
                     Retrofit retrofit = new Retrofit.Builder()
@@ -115,6 +123,21 @@ public class CadastroEmpresaDescricao extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
                             if (response.isSuccessful()) {
+
+                                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                DatabaseReference myRef = database.getReference();
+
+                                DatabaseReference key = myRef.child("CadastroEmpresaLog").push();
+
+                                key.child("nome").setValue(NomeCompleto);
+                                key.child("usuário").setValue(Username);
+                                key.child("email").setValue(EmailUsuario);
+
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                                String dataAtual = dateFormat.format(new Date());
+
+                                key.child("dataCadastro").setValue(dataAtual);
+
                                 Intent intent = new Intent(CadastroEmpresaDescricao.this, ConclusaoCadastroEmpresa.class);
                                 startActivity(intent);
                             } else {

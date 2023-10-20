@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+
     tools:context=".CadastroEmpresa.CadastroEmpresaLink">
     <LinearLayout
         android:id="@+id/txtEntreContaEmpresa"
@@ -54,9 +56,9 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/edittext_background"
             android:ems="10"
-            android:inputType="number"
-            android:textColor="@color/black"
+            android:inputType="text"
             android:paddingStart="8dp"
+            android:textColor="@color/black"
             android:textColorHint="#CCCCCC"
             android:textCursorDrawable="@drawable/cursor_color" />
 

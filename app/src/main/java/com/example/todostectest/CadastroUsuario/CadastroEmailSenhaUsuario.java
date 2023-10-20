@@ -212,14 +212,81 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
         txtCadastroUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CadastroEmailSenhaUsuario.this, com.example.todostectest.CadastroEmpresa.CadastroEmpresaTelefone.class);
 
-                String EmailUsuario = iptEmail.getText().toString();
-                String SenhaUsuario = iptSenha.getText().toString();
+                isValid = true;
+                if (iptEmail.getText().toString().isEmpty()) {
+                    txtRestante.setText("Campo Obrigatório");
+                    linearEmail.setBackgroundResource(R.drawable.edittext_background_red);
+                    isValid = false;
+                } else {
+                    txtRestante.setText("");
+                    linearEmail.setBackgroundResource(R.drawable.edittext_background);
+                }
 
-                intent.putExtra("EmailUsuario", EmailUsuario);
-                intent.putExtra("SenhaUsuario", SenhaUsuario);
-                startActivity(intent);
+                if (iptSenha.getText().toString().isEmpty()) {
+                    txtValidaSenha.setText("Campo Obrigatório");
+                    txtValidaSenha.setTextSize(14);
+                    txtValidaSenha2.setText("");
+                    txtValidaSenha3.setText("");
+                    linearSenha.setBackgroundResource(R.drawable.edittext_background_red);
+                    txtValidaSenha.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                } else {
+                    txtValidaSenha.setText("• Deve conter no mínimo 8 caracteres.");
+                    txtValidaSenha2.setText("• Deve conter pelo menos uma letra maiúscula.");
+                    txtValidaSenha3.setText("• Deve conter um número, uma letra e um caractere especial.");
+                    linearSenha.setBackgroundResource(R.drawable.edittext_background);
+                    txtValidaSenha.setTextSize(10);
+                }
+
+                if (!iptSenha.getText().toString().isEmpty()) {
+                    validarSenha(iptSenha);
+                }
+                if (iptEmail.getText().toString().isEmpty()) {
+                    isValid = false;
+                    txtRestante.setText("Campo Obrigatório");
+                    linearEmail.setBackgroundResource(R.drawable.edittext_background_red);
+                    txtRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+
+                } else {
+                    if (isValidEmail(iptEmail.getText().toString())) {
+                        txtRestante.setText("");
+                        linearEmail.setBackgroundResource(R.drawable.edittext_background);
+                    } else {
+                        txtRestante.setText("Email inválido");
+                        isValid = false;
+                        linearEmail.setBackgroundResource(R.drawable.edittext_background_red);
+                        txtRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                    }
+                }
+
+                if (iptConfirmarSenha.getText().toString().isEmpty()) {
+                    isValid = false;
+                    txtRestante3.setText("Campo Obrigatório");
+                    linearConfirmar.setBackgroundResource(R.drawable.edittext_background_red);
+                    txtRestante3.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                } else {
+                    txtRestante3.setText("");
+                    linearConfirmar.setBackgroundResource(R.drawable.edittext_background);
+                }
+
+                if (isValid) {
+                    validarSenha(iptSenha);
+
+                    if (!iptSenha.getText().toString().equals(iptConfirmarSenha.getText().toString())) {
+                        txtRestante3.setText("As senhas não correspondem");
+                        linearSenha.setBackgroundResource(R.drawable.edittext_background_red);
+                        linearConfirmar.setBackgroundResource(R.drawable.edittext_background_red);
+                        txtRestante3.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                        isValid = false;
+                    } else {
+                        txtRestante3.setText("");
+                        linearSenha.setBackgroundResource(R.drawable.edittext_background);
+                        linearConfirmar.setBackgroundResource(R.drawable.edittext_background);
+                    }
+
+
+                }
+                rotaEmail();
             }
         });
     }
@@ -281,8 +348,6 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
             linearConfirmar.setBackgroundResource(R.drawable.edittext_background);
         }
 
-        rotaEmail();
-
         if (isValid) {
             validarSenha(iptSenha);
 
@@ -297,8 +362,53 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
                 linearSenha.setBackgroundResource(R.drawable.edittext_background);
                 linearConfirmar.setBackgroundResource(R.drawable.edittext_background);
             }
+        }
+        if(isValid) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("https://api-3wfy.onrender.com/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
 
+            ApiMobile apiService = retrofit.create(ApiMobile.class);
 
+            String email = iptEmail.getText().toString();
+
+            Call<verificaAPI> call = apiService.verificaEmail(email);
+
+            call.enqueue(new Callback<verificaAPI>() {
+                @Override
+                public void onResponse(Call<verificaAPI> call, Response<verificaAPI> response) {
+                    if (response.isSuccessful()) {
+                        RespostaAPI = response.body();
+                        if (RespostaAPI.getMensagem().equals("Email liberado")) {
+                            isValid = true;
+                        } else {
+                            txtRestante.setText("Email já cadastrado");
+                            linearEmail.setBackgroundResource(R.drawable.edittext_background_red);
+                            txtRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                            isValid = false;
+                        }
+
+                        if (isValid) {
+                            String EmailUsuario = iptEmail.getText().toString();
+                            String SenhaUsuario = iptSenha.getText().toString();
+
+                            Intent intent = new Intent(CadastroEmailSenhaUsuario.this, CadastroUserTelefoneUsuario.class);
+                            intent.putExtra("EmailUsuario", EmailUsuario);
+                            intent.putExtra("SenhaUsuario", SenhaUsuario);
+                            startActivity(intent);
+                        }
+
+                    } else {
+                        Toast.makeText(CadastroEmailSenhaUsuario.this, "Erro ao conectar ao servidor: " + response.code(), Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<verificaAPI> call, Throwable t) {
+                    Toast.makeText(CadastroEmailSenhaUsuario.this, "Erro ao conectar ao servidor: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
         }
     }
 
