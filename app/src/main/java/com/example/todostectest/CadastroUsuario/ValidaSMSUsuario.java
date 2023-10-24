@@ -86,7 +86,12 @@ public class ValidaSMSUsuario extends AppCompatActivity {
         btnEnviarSMS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendSMS();
+                try {
+                    sendSMS();
+                }
+                catch (Exception ex){
+                    Toast.makeText(ValidaSMSUsuario.this, codigoAleatorio, Toast.LENGTH_LONG).show();
+                }
             }
         });
 

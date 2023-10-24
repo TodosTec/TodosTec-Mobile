@@ -9,22 +9,21 @@
 
     <LinearLayout
         android:id="@+id/txtEntreConta"
-        android:layout_width="300dp"
+        android:layout_width="450dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.3">
 
         <ImageView
             android:id="@+id/imgLogo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="56dp"
             app:srcCompat="@drawable/logotec" />
 
         <TextView
@@ -35,18 +34,17 @@
             android:gravity="center_horizontal"
             android:text="Cadastro feito!"
             android:textColor="@color/black"
-            android:textSize="40dp" />
+            android:textSize="56dp" />
 
         <TextView
             android:id="@+id/txtPerguntaUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:shadowDx="0"
-            android:shadowDy="1"
-            android:shadowRadius="3"
+            android:gravity="center"
             android:text="Parabéns! Seu cadastro foi realizado com sucesso e você já pode usar nosso aplicativo. "
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="18dp" />
 
         <Button
             android:id="@+id/btnContinuar"

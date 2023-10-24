@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.todostectest.API.ApiMobile;
 import com.example.todostectest.API.verificaAPI;
+import com.example.todostectest.CadastroEmpresa.CadastroEmpresaTelefone;
 import com.example.todostectest.R;
 
 import retrofit2.Call;
@@ -235,7 +236,7 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
                     txtValidaSenha2.setText("• Deve conter pelo menos uma letra maiúscula.");
                     txtValidaSenha3.setText("• Deve conter um número, uma letra e um caractere especial.");
                     linearSenha.setBackgroundResource(R.drawable.edittext_background);
-                    txtValidaSenha.setTextSize(10);
+                    txtValidaSenha.setTextSize(14);
                 }
 
                 if (!iptSenha.getText().toString().isEmpty()) {
@@ -314,7 +315,7 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
             txtValidaSenha2.setText("• Deve conter pelo menos uma letra maiúscula.");
             txtValidaSenha3.setText("• Deve conter um número, uma letra e um caractere especial.");
             linearSenha.setBackgroundResource(R.drawable.edittext_background);
-            txtValidaSenha.setTextSize(10);
+            txtValidaSenha.setTextSize(14);
         }
 
         if (!iptSenha.getText().toString().isEmpty()) {
@@ -510,7 +511,7 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
                         String EmailUsuario = iptEmail.getText().toString();
                         String SenhaUsuario = iptSenha.getText().toString();
 
-                        Intent intent = new Intent(CadastroEmailSenhaUsuario.this, CadastroUserTelefoneUsuario.class);
+                        Intent intent = new Intent(CadastroEmailSenhaUsuario.this, CadastroEmpresaTelefone.class);
                         intent.putExtra("EmailUsuario", EmailUsuario);
                         intent.putExtra("SenhaUsuario", SenhaUsuario);
                         startActivity(intent);

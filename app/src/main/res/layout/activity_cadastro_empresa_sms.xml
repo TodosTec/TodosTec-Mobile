@@ -9,20 +9,20 @@
 
     <LinearLayout
         android:id="@+id/txtEntreContaEmpresa"
-        android:layout_width="300dp"
+        android:layout_width="450dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.3">
+
 
         <ImageView
             android:id="@+id/imgLogo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             app:srcCompat="@drawable/logotec" />
@@ -32,9 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:shadowDx="0"
-            android:shadowDy="1"
-            android:shadowRadius="3"
+            android:textSize="18dp"
             android:text=""
             android:textColor="@color/black" />
 
@@ -43,22 +41,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:shadowDx="0"
-            android:shadowDy="1"
-            android:shadowRadius="3"
             android:text="Código do SMS"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="18dp" />
 
         <EditText
             android:id="@+id/iptDescricaoEmpresa"
             android:layout_width="match_parent"
-            android:layout_height="42dp"
+            android:layout_height="48dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/edittext_background"
             android:ems="10"
             android:inputType="number"
-            android:textColor="@color/black"
             android:paddingStart="8dp"
+            android:textColor="@color/black"
             android:textColorHint="#CCCCCC"
             android:textCursorDrawable="@drawable/cursor_color" />
 
@@ -69,24 +65,14 @@
             android:text=""
             android:textColor="#FFFFFF" />
 
-        <TextView
-            android:id="@+id/txtCadastroUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="70dp"
-            android:gravity="center"
-            android:text="Quer cadastrar um usuário? Entre agora!"
-            android:textColor="@color/black" />
-
         <Button
             android:id="@+id/EnviarSMSEmpresa"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/rounded_button"
+            android:layout_marginTop="160dp"
+            android:background="@drawable/rounded_button_transparente"
             android:text="Enviar SMS"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="18sp"
             app:backgroundTint="@null" />
 
@@ -94,6 +80,7 @@
             android:id="@+id/btnContinuarEmpresa"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/rounded_button"
             android:onClick="cadastroOnClick"
             android:text="Continuar"

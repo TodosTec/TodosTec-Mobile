@@ -2,6 +2,7 @@ package com.example.todostectest.CadastroUsuario;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -61,11 +62,13 @@ public class CadastroGeneroPronomeUsuario extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (spinnerOrientacaoSexual.getSelectedItemPosition() == 0 && telaAbrindoOrienta != 0) {
                     txtRestante2.setText("Campo Obrigatório");
+                    ((TextView) adapterView.getChildAt(0)).setTextColor(Color.BLACK);
                     spinnerOrientacaoSexual.setBackgroundResource(R.drawable.edittext_background_red);
                     txtRestante2.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                 } else {
                     txtRestante2.setText("");
                     spinnerOrientacaoSexual.setBackgroundResource(R.drawable.edittext_background);
+                    ((TextView) adapterView.getChildAt(0)).setTextColor(Color.BLACK);
                 }
 
                 telaAbrindoOrienta = 1;
@@ -81,11 +84,13 @@ public class CadastroGeneroPronomeUsuario extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (spinnerGenero.getSelectedItemPosition() == 0 && telaAbrindoGenero != 0) {
                     txtRestante.setText("Campo Obrigatório");
+                    ((TextView) adapterView.getChildAt(0)).setTextColor(Color.BLACK);
                     spinnerGenero.setBackgroundResource(R.drawable.edittext_background_red);
                     txtRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                 } else {
                     txtRestante.setText("");
                     spinnerGenero.setBackgroundResource(R.drawable.edittext_background);
+                    ((TextView) adapterView.getChildAt(0)).setTextColor(Color.BLACK);
                 }
                 telaAbrindoGenero = 1;
             }
@@ -100,11 +105,13 @@ public class CadastroGeneroPronomeUsuario extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (spinnerPronomes.getSelectedItemPosition() == 0 && telaAbrindoPronome != 0) {
                     txtRestante3.setText("Campo Obrigatório");
+                    ((TextView) adapterView.getChildAt(0)).setTextColor(Color.BLACK);
                     spinnerPronomes.setBackgroundResource(R.drawable.edittext_background_red);
                     txtRestante3.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                 } else {
                     txtRestante3.setText("");
                     spinnerPronomes.setBackgroundResource(R.drawable.edittext_background);
+                    ((TextView) adapterView.getChildAt(0)).setTextColor(Color.BLACK);
                 }
                 telaAbrindoPronome = 1;
 

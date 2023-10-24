@@ -46,10 +46,10 @@
             android:name=".CadastroUsuario.ConclusaoCadastroUsuario"
             android:exported="false" />
         <activity
-            android:name=".CadastroUsuario.CadastroDescricaoUsuario"
+            android:name=".CadastroUsuario.CadastroGeneroPronomeUsuario"
             android:exported="false" />
         <activity
-            android:name=".CadastroUsuario.CadastroGeneroPronomeUsuario"
+            android:name=".CadastroUsuario.CadastroDescricaoUsuario"
             android:exported="false" />
         <activity
             android:name=".CadastroUsuario.ValidaSMSUsuario"

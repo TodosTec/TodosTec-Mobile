@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:id="@+id/txtEntreContaEmpresa"
-        android:layout_width="300dp"
+        android:layout_width="450dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,8 +19,8 @@
 
         <ImageView
             android:id="@+id/imgLogo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             app:srcCompat="@drawable/logotec" />
@@ -30,16 +30,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:shadowDx="0"
-            android:shadowDy="1"
-            android:shadowRadius="3"
+            android:textSize="18dp"
             android:text="Nome da empresa"
             android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/iptDescricaoEmpresa"
             android:layout_width="match_parent"
-            android:layout_height="42dp"
+            android:layout_height="48dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/edittext_background"
             android:ems="10"
@@ -61,13 +59,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:textSize="18dp"
             android:text="Username"
             android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/iptUsernameEmpresa"
             android:layout_width="match_parent"
-            android:layout_height="42dp"
+            android:layout_height="48dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/edittext_background"
             android:ems="10"
@@ -89,13 +88,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:textSize="18dp"
             android:text="Tefelone"
             android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/iptTelefoneEmpresa"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="48dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/edittext_background"
             android:ems="10"
@@ -112,20 +112,11 @@
             android:text=""
             android:textColor="#FFFFFF" />
 
-        <TextView
-            android:id="@+id/txtCadastroUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:gravity="center"
-            android:text="Quer cadastrar um usuário? Entre agora!"
-            android:textColor="@color/black" />
-
         <Button
             android:id="@+id/btnContinuarEmpresa"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginVertical="40dp"
+            android:layout_marginVertical="60dp"
             android:background="@drawable/rounded_button"
             android:text="Continuar"
             android:textColor="#FFFFFF"
