@@ -27,7 +27,6 @@ public class CadastroDescricaoUsuario extends AppCompatActivity {
     EditText iptDescricao;
     TextView txtRestante;
     Button btnContinuar;
-
     String EmailUsuario;
     String SenhaUsuario;
     String ConfirmarSenha;
@@ -67,7 +66,7 @@ public class CadastroDescricaoUsuario extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (iptDescricao.getText().toString().isEmpty()) {
+                if (iptDescricao.getText().toString().trim().isEmpty()) {
                     txtRestante.setText("Campo Obrigatório");
                     iptDescricao.setBackgroundResource(R.drawable.edittext_background_red);
                     txtRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
@@ -88,7 +87,7 @@ public class CadastroDescricaoUsuario extends AppCompatActivity {
           public void onClick(View view) {
               boolean isValid = true;
 
-              if (iptDescricao.getText().toString().isEmpty()) {
+              if (iptDescricao.getText().toString().trim().isEmpty()) {
                   txtRestante.setText("Campo Obrigatório");
                   iptDescricao.setBackgroundResource(R.drawable.edittext_background_red);
                   txtRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -100,7 +101,7 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
 
-                if (iptEmail.getText().toString().isEmpty()) {
+                if (iptEmail.getText().toString().trim().isEmpty()) {
                     txtRestante.setText("Campo Obrigatório");
                     linearEmail.setBackgroundResource(R.drawable.edittext_background_red);
                     txtRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
@@ -120,7 +121,7 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
 
-                    if (iptEmail.getText().toString().isEmpty()) {
+                    if (iptEmail.getText().toString().trim().isEmpty()) {
                         txtRestante.setText("Campo Obrigatório");
                         linearEmail.setBackgroundResource(R.drawable.edittext_background_red);
                         txtRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
@@ -148,7 +149,7 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (!iptSenha.getText().toString().isEmpty()) {
+                if (!iptSenha.getText().toString().trim().isEmpty()) {
                     validarSenha(iptSenha);
                 }
 
@@ -156,9 +157,8 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (iptSenha.getText().toString().isEmpty()) {
+                if (iptSenha.getText().toString().trim().isEmpty()) {
                     txtValidaSenha.setText("Campo Obrigatório");
-                    txtValidaSenha.setTextSize(14);
                     txtValidaSenha2.setText("");
                     txtValidaSenha3.setText("");
                     linearSenha.setBackgroundResource(R.drawable.edittext_background_red);
@@ -176,10 +176,12 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    if (iptEmail.getText().toString().isEmpty()) {
-                        txtRestante.setText("Campo Obrigatório");
+                    if (iptSenha.getText().toString().trim().isEmpty()) {
+                        txtValidaSenha.setText("Campo Obrigatório");
                         linearSenha.setBackgroundResource(R.drawable.edittext_background_red);
-
+                        txtValidaSenha.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                        txtValidaSenha2.setText("");
+                        txtValidaSenha3.setText("");
                     } else {
                         txtRestante.setText("");
                         linearSenha.setBackgroundResource(R.drawable.edittext_background);
@@ -195,7 +197,7 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (iptConfirmarSenha.getText().toString().isEmpty()) {
+                if (iptConfirmarSenha.getText().toString().trim().isEmpty()) {
                     txtRestante3.setText("Campo Obrigatório");
                     linearConfirmar.setBackgroundResource(R.drawable.edittext_background_red);
                     txtRestante3.setTextColor(getResources().getColor(android.R.color.holo_red_light));
@@ -215,7 +217,7 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
             public void onClick(View view) {
 
                 isValid = true;
-                if (iptEmail.getText().toString().isEmpty()) {
+                if (iptEmail.getText().toString().trim().isEmpty()) {
                     txtRestante.setText("Campo Obrigatório");
                     linearEmail.setBackgroundResource(R.drawable.edittext_background_red);
                     isValid = false;
@@ -224,9 +226,8 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
                     linearEmail.setBackgroundResource(R.drawable.edittext_background);
                 }
 
-                if (iptSenha.getText().toString().isEmpty()) {
+                if (iptSenha.getText().toString().trim().isEmpty()) {
                     txtValidaSenha.setText("Campo Obrigatório");
-                    txtValidaSenha.setTextSize(14);
                     txtValidaSenha2.setText("");
                     txtValidaSenha3.setText("");
                     linearSenha.setBackgroundResource(R.drawable.edittext_background_red);
@@ -236,13 +237,12 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
                     txtValidaSenha2.setText("• Deve conter pelo menos uma letra maiúscula.");
                     txtValidaSenha3.setText("• Deve conter um número, uma letra e um caractere especial.");
                     linearSenha.setBackgroundResource(R.drawable.edittext_background);
-                    txtValidaSenha.setTextSize(14);
                 }
 
-                if (!iptSenha.getText().toString().isEmpty()) {
+                if (!iptSenha.getText().toString().trim().isEmpty()) {
                     validarSenha(iptSenha);
                 }
-                if (iptEmail.getText().toString().isEmpty()) {
+                if (iptEmail.getText().toString().trim().isEmpty()) {
                     isValid = false;
                     txtRestante.setText("Campo Obrigatório");
                     linearEmail.setBackgroundResource(R.drawable.edittext_background_red);
@@ -260,7 +260,7 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
                     }
                 }
 
-                if (iptConfirmarSenha.getText().toString().isEmpty()) {
+                if (iptConfirmarSenha.getText().toString().trim().isEmpty()) {
                     isValid = false;
                     txtRestante3.setText("Campo Obrigatório");
                     linearConfirmar.setBackgroundResource(R.drawable.edittext_background_red);
@@ -287,14 +287,17 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
 
 
                 }
-                rotaEmail();
+                if (isValid) {
+                    rotaEmail();
+                }
             }
         });
     }
 
     public void cadastroOnClick(View view) {
         isValid = true;
-        if (iptEmail.getText().toString().isEmpty()) {
+
+        if (iptEmail.getText().toString().trim().isEmpty()) {
             txtRestante.setText("Campo Obrigatório");
             linearEmail.setBackgroundResource(R.drawable.edittext_background_red);
             isValid = false;
@@ -303,9 +306,8 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
             linearEmail.setBackgroundResource(R.drawable.edittext_background);
         }
 
-        if (iptSenha.getText().toString().isEmpty()) {
+        if (iptSenha.getText().toString().trim().isEmpty()) {
             txtValidaSenha.setText("Campo Obrigatório");
-            txtValidaSenha.setTextSize(14);
             txtValidaSenha2.setText("");
             txtValidaSenha3.setText("");
             linearSenha.setBackgroundResource(R.drawable.edittext_background_red);
@@ -315,13 +317,12 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
             txtValidaSenha2.setText("• Deve conter pelo menos uma letra maiúscula.");
             txtValidaSenha3.setText("• Deve conter um número, uma letra e um caractere especial.");
             linearSenha.setBackgroundResource(R.drawable.edittext_background);
-            txtValidaSenha.setTextSize(14);
         }
 
-        if (!iptSenha.getText().toString().isEmpty()) {
+        if (!iptSenha.getText().toString().trim().isEmpty()) {
             validarSenha(iptSenha);
         }
-        if (iptEmail.getText().toString().isEmpty()) {
+        if (iptEmail.getText().toString().trim().isEmpty()) {
             isValid = false;
             txtRestante.setText("Campo Obrigatório");
             linearEmail.setBackgroundResource(R.drawable.edittext_background_red);
@@ -339,7 +340,7 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
             }
         }
 
-        if (iptConfirmarSenha.getText().toString().isEmpty()) {
+        if (iptConfirmarSenha.getText().toString().trim().isEmpty()) {
             isValid = false;
             txtRestante3.setText("Campo Obrigatório");
             linearConfirmar.setBackgroundResource(R.drawable.edittext_background_red);
@@ -365,6 +366,9 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
             }
         }
         if(isValid) {
+            ProgressBar loadingProgressBar = findViewById(R.id.loadingProgressBar);
+            loadingProgressBar.setVisibility(View.VISIBLE);
+
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl("https://api-3wfy.onrender.com/")
                     .addConverterFactory(GsonConverterFactory.create())
@@ -397,6 +401,7 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
                             Intent intent = new Intent(CadastroEmailSenhaUsuario.this, CadastroUserTelefoneUsuario.class);
                             intent.putExtra("EmailUsuario", EmailUsuario);
                             intent.putExtra("SenhaUsuario", SenhaUsuario);
+                            loadingProgressBar.setVisibility(View.INVISIBLE);
                             startActivity(intent);
                         }
 
@@ -481,6 +486,9 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
     }
 
     public void rotaEmail() {
+        ProgressBar loadingProgressBar = findViewById(R.id.loadingProgressBar);
+        loadingProgressBar.setVisibility(View.VISIBLE);
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api-3wfy.onrender.com/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -514,6 +522,7 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
                         Intent intent = new Intent(CadastroEmailSenhaUsuario.this, CadastroEmpresaTelefone.class);
                         intent.putExtra("EmailUsuario", EmailUsuario);
                         intent.putExtra("SenhaUsuario", SenhaUsuario);
+                        loadingProgressBar.setVisibility(View.INVISIBLE);
                         startActivity(intent);
                     }
 

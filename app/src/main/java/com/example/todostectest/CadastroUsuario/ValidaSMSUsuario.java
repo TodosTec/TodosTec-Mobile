@@ -50,7 +50,12 @@ public class ValidaSMSUsuario extends AppCompatActivity {
         NomeCompleto = intent.getStringExtra("NomeCompleto");
         Username = intent.getStringExtra("Username");
         Telefone = intent.getStringExtra("Telefone");
-        SemFormatacaoTelefone = intent.getStringExtra("SemFormatacaoTelefone").substring(2);
+        String semFormatacaoTelefoneExtra = intent.getStringExtra("SemFormatacaoTelefone");
+        if (semFormatacaoTelefoneExtra != null) {
+            SemFormatacaoTelefone = semFormatacaoTelefoneExtra.substring(2);
+        } else {
+
+        }
 
         txtSMS.setText("Foi enviado nesse numero de telefone:" + Telefone + " um código de SMS para verificar seu telefone. Insira-o no campo abaixo:");
 
@@ -66,7 +71,7 @@ public class ValidaSMSUsuario extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (iptCódigoSMS.getText().toString().isEmpty()) {
+                if (iptCódigoSMS.getText().toString().trim().isEmpty()) {
                     txtRestante3.setText("Campo Obrigatório");
                     iptCódigoSMS.setBackgroundResource(R.drawable.edittext_background_red);
                     txtRestante3.setTextColor(getResources().getColor(android.R.color.holo_red_light));
@@ -101,7 +106,7 @@ public class ValidaSMSUsuario extends AppCompatActivity {
                 Toast.makeText(ValidaSMSUsuario.this, codigoAleatorio, Toast.LENGTH_LONG).show();
                 boolean isValid = true;
 
-                if (iptCódigoSMS.getText().toString().isEmpty()) {
+                if (iptCódigoSMS.getText().toString().trim().isEmpty()) {
                     txtRestante3.setText("Campo Obrigatório");
                     iptCódigoSMS.setBackgroundResource(R.drawable.edittext_background_red);
                     txtRestante3.setTextColor(getResources().getColor(android.R.color.holo_red_light));

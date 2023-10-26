@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,7 +69,7 @@ public class CadastroEmpresaDescricao extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (iptDescricao.getText().toString().isEmpty()) {
+                if (iptDescricao.getText().toString().trim().isEmpty()) {
                     txtRestante.setText("Campo Obrigatório");
                     iptDescricao.setBackgroundResource(R.drawable.edittext_background_red);
                     txtRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
@@ -89,7 +90,7 @@ public class CadastroEmpresaDescricao extends AppCompatActivity {
             public void onClick(View view) {
                 boolean isValid = true;
 
-                if (iptDescricao.getText().toString().isEmpty()) {
+                if (iptDescricao.getText().toString().trim().isEmpty()) {
                     txtRestante.setText("Campo Obrigatório");
                     iptDescricao.setBackgroundResource(R.drawable.edittext_background_red);
                     txtRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
@@ -100,6 +101,9 @@ public class CadastroEmpresaDescricao extends AppCompatActivity {
                 }
 
                 if (isValid) {
+                    ProgressBar loadingProgressBar = findViewById(R.id.loadingProgressBar);
+                    loadingProgressBar.setVisibility(View.VISIBLE);
+
                     CompanyData companyData = new CompanyData(
                             NomeCompleto,
                             Username,
@@ -139,6 +143,7 @@ public class CadastroEmpresaDescricao extends AppCompatActivity {
                                 key.child("dataCadastro").setValue(dataAtual);
 
                                 Intent intent = new Intent(CadastroEmpresaDescricao.this, ConclusaoCadastroEmpresa.class);
+                                loadingProgressBar.setVisibility(View.INVISIBLE);
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(CadastroEmpresaDescricao.this, "Erro ao cadastrar usuário.", Toast.LENGTH_SHORT).show();
