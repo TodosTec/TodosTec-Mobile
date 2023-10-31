@@ -16,6 +16,9 @@
         android:theme="@style/Theme.TodosTecTest"
         tools:targetApi="31">
         <activity
+            android:name=".CadastroEmpresa.CadastroEmailSenhaEmpresa"
+            android:exported="false" />
+        <activity
             android:name=".CadastroEmpresa.CadastroEmpresaLink"
             android:exported="false" />
         <activity

@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".CadastroEmpresa.CadastroEmpresaSMS">
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/txtEntreContaEmpresa"
@@ -34,7 +39,9 @@
             android:layout_marginTop="40dp"
             android:textSize="18dp"
             android:text=""
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <TextView
             android:id="@+id/txtLink"
@@ -43,7 +50,9 @@
             android:layout_marginTop="40dp"
             android:text="Código do SMS"
             android:textColor="@color/black"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <EditText
             android:id="@+id/iptDescricaoEmpresa"
@@ -56,14 +65,18 @@
             android:paddingStart="8dp"
             android:textColor="@color/black"
             android:textColorHint="#CCCCCC"
-            android:textCursorDrawable="@drawable/cursor_color" />
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:maxLength="6"
+            />
 
         <TextView
             android:id="@+id/txtFeedbackDescricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <Button
             android:id="@+id/EnviarSMSEmpresa"
@@ -74,7 +87,9 @@
             android:text="Enviar SMS"
             android:textColor="#000000"
             android:textSize="18sp"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null"
+            android:fontFamily="@font/robotomedium"
+            />
 
         <Button
             android:id="@+id/btnContinuarEmpresa"
@@ -86,7 +101,9 @@
             android:text="Continuar"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null"
+            android:fontFamily="@font/robotomedium"
+            />
 
 
     </LinearLayout>
@@ -105,3 +122,4 @@
         app:srcCompat="@drawable/voltar_seta" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

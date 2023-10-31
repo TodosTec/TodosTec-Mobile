@@ -3,9 +3,11 @@ package com.example.todostectest.CadastroEmpresa;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -66,7 +68,7 @@ public class CadastroEmpresaSMS extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (iptCódigoSMS.getText().toString().isEmpty()) {
+                if (iptCódigoSMS.getText().toString().trim().isEmpty()) {
                     txtRestante3.setText("Campo Obrigatório");
                     iptCódigoSMS.setBackgroundResource(R.drawable.edittext_background_red);
                     txtRestante3.setTextColor(getResources().getColor(android.R.color.holo_red_light));
@@ -86,11 +88,14 @@ public class CadastroEmpresaSMS extends AppCompatActivity {
         btnEnviarSMS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    sendSMS();
-                }
-                catch (Exception ex){
-                    Toast.makeText(CadastroEmpresaSMS.this, codigoAleatorio, Toast.LENGTH_LONG).show();
+                TelephonyManager telMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+                int simState = telMgr.getSimState();
+                switch (simState) {
+                    case TelephonyManager.SIM_STATE_UNKNOWN:
+                        break;
+                    case TelephonyManager.SIM_STATE_READY:
+                        sendSMS();
+                        break;
                 }
             }
         });
@@ -101,7 +106,7 @@ public class CadastroEmpresaSMS extends AppCompatActivity {
                 Toast.makeText(CadastroEmpresaSMS.this, codigoAleatorio, Toast.LENGTH_LONG).show();
                 boolean isValid = true;
 
-                if (iptCódigoSMS.getText().toString().isEmpty()) {
+                if (iptCódigoSMS.getText().toString().trim().isEmpty()) {
                     txtRestante3.setText("Campo Obrigatório");
                     iptCódigoSMS.setBackgroundResource(R.drawable.edittext_background_red);
                     txtRestante3.setTextColor(getResources().getColor(android.R.color.holo_red_light));

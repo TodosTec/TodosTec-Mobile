@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".CadastroUsuario.CadastroEmailSenhaUsuario">
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/txtEntreConta"
@@ -32,10 +37,12 @@
             android:layout_marginTop="40dp"
             android:textSize="18dp"
             android:text="Nome Completo"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <EditText
-            android:id="@+id/iptDescricaoUsuario"
+            android:id="@+id/iptNome"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="5dp"
@@ -45,14 +52,18 @@
             android:paddingStart="8dp"
             android:textColorHint="#CCCCCC"
             android:textColor="@color/black"
-            android:textCursorDrawable="@drawable/cursor_color" />
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:maxLength="100"
+            />
 
         <TextView
             android:id="@+id/txtValidaSenhaUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <TextView
             android:id="@+id/txtUserName"
@@ -61,10 +72,12 @@
             android:layout_marginTop="40dp"
             android:textSize="18dp"
             android:text="Username"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <EditText
-            android:id="@+id/spOrientacao"
+            android:id="@+id/iptUserName"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="5dp"
@@ -74,14 +87,18 @@
             android:textColor="@color/black"
             android:paddingStart="8dp"
             android:textColorHint="#CCCCCC"
-            android:textCursorDrawable="@drawable/cursor_color" />
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:maxLength="30"
+            />
 
         <TextView
             android:id="@+id/txtOrientacao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <TextView
             android:id="@+id/txtConfirmar"
@@ -90,10 +107,12 @@
             android:layout_marginTop="40dp"
             android:textSize="18dp"
             android:text="Telefone"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <EditText
-            android:id="@+id/spPronome"
+            android:id="@+id/iptTelefone"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="5dp"
@@ -110,7 +129,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <Button
             android:id="@+id/btnContinuar"
@@ -121,7 +142,21 @@
             android:text="Continuar"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null"
+            android:fontFamily="@font/robotomedium"
+            />
+
+        <ProgressBar
+            android:id="@+id/loadingProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:visibility="invisible"
+            android:indeterminateDrawable="@drawable/progress_bg"
+            android:backgroundTint="@color/black"
+            />
 
 
     </LinearLayout>
@@ -140,3 +175,4 @@
         app:srcCompat="@drawable/voltar_seta" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

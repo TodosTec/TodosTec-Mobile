@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".CadastroUsuario.CadastroEmailSenhaUsuario">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
 
     <LinearLayout
         android:id="@+id/txtEntreConta"
@@ -23,7 +32,8 @@
             android:layout_height="200dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
-            app:srcCompat="@drawable/logotec" />
+            app:srcCompat="@drawable/logotec"
+            />
 
         <TextView
             android:id="@+id/txtEmailUsuario"
@@ -32,7 +42,9 @@
             android:layout_marginTop="40dp"
             android:textSize="18dp"
             android:text="Email"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <LinearLayout
             android:id="@+id/linearEmail"
@@ -52,14 +64,18 @@
                 android:paddingStart="8dp"
                 android:textColor="@color/black"
                 android:textColorHint="#CCCCCC"
-                android:textCursorDrawable="@drawable/cursor_color" />
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:maxLength="100"
+                />
         </LinearLayout>
 
         <TextView
             android:id="@+id/txtFeedback1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <TextView
             android:id="@+id/txtSenhaUsuario"
@@ -68,7 +84,9 @@
             android:layout_marginTop="24dp"
             android:textSize="18dp"
             android:text="Senha"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <LinearLayout
             android:id="@+id/linearSenha"
@@ -88,7 +106,9 @@
                 android:paddingStart="8dp"
                 android:textColor="@color/black"
                 android:textColorHint="#CCCCCC"
-                android:textCursorDrawable="@drawable/cursor_color" />
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:maxLength="100"
+                />
 
             <ImageView
                 android:id="@+id/mostrarSenha"
@@ -117,7 +137,9 @@
                 android:layout_height="wrap_content"
                 android:text="• Deve conter no mínimo 8 caracteres."
                 android:textColor="@color/black"
-                android:textSize="14dp" />
+                android:textSize="14dp"
+                android:fontFamily="@font/robotoregular"
+                />
 
             <TextView
                 android:id="@+id/txtValidaSenhaUsuario2"
@@ -125,7 +147,9 @@
                 android:layout_height="wrap_content"
                 android:text="• Deve conter pelo menos uma letra maiúscula."
                 android:textColor="@color/black"
-                android:textSize="14dp" />
+                android:textSize="14dp"
+                android:fontFamily="@font/robotoregular"
+                />
 
             <TextView
                 android:id="@+id/txtValidaSenhaUsuario3"
@@ -133,7 +157,9 @@
                 android:layout_height="wrap_content"
                 android:text="• Deve conter um número, uma letra e um caractere especial."
                 android:textColor="@color/black"
-                android:textSize="14dp" />
+                android:textSize="14dp"
+                android:fontFamily="@font/robotoregular"
+                />
 
         </LinearLayout>
 
@@ -144,7 +170,9 @@
             android:layout_marginTop="24dp"
             android:textSize="18dp"
             android:text="Confirmar Senha"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <LinearLayout
             android:id="@+id/linearConfirmar"
@@ -164,7 +192,9 @@
                 android:paddingStart="8dp"
                 android:textColor="@color/black"
                 android:textColorHint="#CCCCCC"
-                android:textCursorDrawable="@drawable/cursor_color" />
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:maxLength="100"
+                />
 
             <ImageView
                 android:id="@+id/mostrarConfirmar"
@@ -200,14 +230,27 @@
             android:id="@+id/btnContinuar"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginVertical="40dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/rounded_button"
             android:onClick="cadastroOnClick"
             android:text="Continuar"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null"
+            android:fontFamily="@font/robotomedium"
+            />
 
+        <ProgressBar
+            android:id="@+id/loadingProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:visibility="invisible"
+            android:indeterminateDrawable="@drawable/progress_bg"
+            android:backgroundTint="@color/black"
+             />
 
     </LinearLayout>
 
@@ -226,3 +269,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

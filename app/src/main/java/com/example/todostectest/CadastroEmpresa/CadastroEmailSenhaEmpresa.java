@@ -1,4 +1,4 @@
-package com.example.todostectest.CadastroUsuario;
+package com.example.todostectest.CadastroEmpresa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,8 +18,8 @@ import android.widget.Toast;
 
 import com.example.todostectest.API.ApiMobile;
 import com.example.todostectest.API.verificaAPI;
-import com.example.todostectest.CadastroEmpresa.CadastroEmailSenhaEmpresa;
-import com.example.todostectest.CadastroEmpresa.CadastroEmpresaTelefone;
+import com.example.todostectest.CadastroUsuario.CadastroEmailSenhaUsuario;
+import com.example.todostectest.CadastroUsuario.CadastroUserTelefoneUsuario;
 import com.example.todostectest.R;
 
 import retrofit2.Call;
@@ -28,7 +28,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class CadastroEmailSenhaUsuario extends AppCompatActivity {
+public class CadastroEmailSenhaEmpresa extends AppCompatActivity {
 
     EditText iptEmail;
     EditText iptSenha;
@@ -38,7 +38,6 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
     TextView txtValidaSenha2;
     TextView txtValidaSenha3;
     TextView txtRestante3;
-    TextView txtCadastroUsuario;
     LinearLayout linearEmail;
     LinearLayout linearSenha;
     LinearLayout linearConfirmar;
@@ -52,8 +51,7 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_email_senha_usuario);
-
+        setContentView(R.layout.activity_cadastro_email_senha_empresa);
 
         //Capturando os inputs da tela
         iptEmail = findViewById(R.id.iptEmailUsuario);
@@ -72,7 +70,6 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
         //Capturando os TextViews
         txtRestante = findViewById(R.id.txtFeedback1);
         txtRestante3 = findViewById(R.id.txtperfil);
-        txtCadastroUsuario = findViewById(R.id.txtCadastroUsuario);
         txtValidaSenha = findViewById(R.id.txtValidaSenhaUsuario);
         txtValidaSenha2 = findViewById(R.id.txtValidaSenhaUsuario2);
         txtValidaSenha3 = findViewById(R.id.txtValidaSenhaUsuario3);
@@ -213,13 +210,6 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
             }
         });
 
-        txtCadastroUsuario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(CadastroEmailSenhaUsuario.this, CadastroEmailSenhaEmpresa.class);
-                startActivity(intent);
-            }
-        });
     }
 
     public void cadastroOnClick(View view) {
@@ -333,7 +323,7 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
                             String EmailUsuario = iptEmail.getText().toString();
                             String SenhaUsuario = iptSenha.getText().toString();
 
-                            Intent intent = new Intent(CadastroEmailSenhaUsuario.this, CadastroUserTelefoneUsuario.class);
+                            Intent intent = new Intent(CadastroEmailSenhaEmpresa.this, CadastroEmpresaTelefone.class);
                             intent.putExtra("EmailUsuario", EmailUsuario);
                             intent.putExtra("SenhaUsuario", SenhaUsuario);
                             loadingProgressBar.setVisibility(View.INVISIBLE);
@@ -341,13 +331,13 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
                         }
 
                     } else {
-                        Toast.makeText(CadastroEmailSenhaUsuario.this, "Erro ao conectar ao servidor: " + response.code(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(CadastroEmailSenhaEmpresa.this, "Erro ao conectar ao servidor: " + response.code(), Toast.LENGTH_LONG).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<verificaAPI> call, Throwable t) {
-                    Toast.makeText(CadastroEmailSenhaUsuario.this, "Erro ao conectar ao servidor: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(CadastroEmailSenhaEmpresa.this, "Erro ao conectar ao servidor: " + t.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
         }
@@ -426,58 +416,5 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
 
     public void VoltarOnClick(View view) {
         finish();
-    }
-
-    public void rotaEmail() {
-        ProgressBar loadingProgressBar = findViewById(R.id.loadingProgressBar);
-        loadingProgressBar.setVisibility(View.VISIBLE);
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api-3wfy.onrender.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        ApiMobile apiService = retrofit.create(ApiMobile.class);
-
-        String email = iptEmail.getText().toString();
-
-        Call<verificaAPI> call = apiService.verificaEmail(email);
-
-        call.enqueue(new Callback<verificaAPI>() {
-            @Override
-            public void onResponse(Call<verificaAPI> call, Response<verificaAPI> response) {
-                if (response.isSuccessful()) {
-                    RespostaAPI = response.body();
-                    if (RespostaAPI.getMensagem().equals("Email liberado")){
-                        isValid = true;
-                    }
-                    else{
-                        txtRestante.setText("Email já cadastrado");
-                        linearEmail.setBackgroundResource(R.drawable.edittext_background_red);
-                        txtRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
-                        isValid = false;
-                    }
-
-                    if (isValid) {
-                        String EmailUsuario = iptEmail.getText().toString();
-                        String SenhaUsuario = iptSenha.getText().toString();
-
-                        Intent intent = new Intent(CadastroEmailSenhaUsuario.this, CadastroEmpresaTelefone.class);
-                        intent.putExtra("EmailUsuario", EmailUsuario);
-                        intent.putExtra("SenhaUsuario", SenhaUsuario);
-                        loadingProgressBar.setVisibility(View.INVISIBLE);
-                        startActivity(intent);
-                    }
-
-                } else {
-                    Toast.makeText(CadastroEmailSenhaUsuario.this, "Erro ao conectar ao servidor: " + response.code(), Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<verificaAPI> call, Throwable t) {
-                Toast.makeText(CadastroEmailSenhaUsuario.this, "Erro ao conectar ao servidor: " + t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
     }
 }
