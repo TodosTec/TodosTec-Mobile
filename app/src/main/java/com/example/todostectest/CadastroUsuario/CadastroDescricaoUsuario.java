@@ -10,17 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.todostectest.API.ApiMobile;
-import com.example.todostectest.API.UserData;
 import com.example.todostectest.R;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CadastroDescricaoUsuario extends AppCompatActivity {
 
@@ -42,7 +33,7 @@ public class CadastroDescricaoUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_descricao_usuario);
 
-        iptDescricao = findViewById(R.id.iptDescricaoUsuario);
+        iptDescricao = findViewById(R.id.iptNome);
         txtRestante = findViewById(R.id.txtperfil);
         btnContinuar = findViewById(R.id.btnContinuar);
 

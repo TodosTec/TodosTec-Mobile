@@ -39,7 +39,9 @@
             android:layout_marginTop="40dp"
             android:textSize="18dp"
             android:text="Por favor, compartilhe um pouco mais sobre a sua empresa! Essas informações são fundamentais para nós e os usuarios!"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <TextView
             android:id="@+id/txtLink"
@@ -48,7 +50,9 @@
             android:layout_marginTop="5dp"
             android:textSize="18dp"
             android:text="Descrição"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <EditText
             android:id="@+id/iptDescricaoEmpresa"
@@ -70,7 +74,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="500 caracteres restantes"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <Button
             android:id="@+id/btnContinuarEmpresa"
@@ -82,7 +88,9 @@
             android:text="Continuar"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null"
+            android:fontFamily="@font/robotomedium"
+            />
 
         <ProgressBar
             android:id="@+id/loadingProgressBar"

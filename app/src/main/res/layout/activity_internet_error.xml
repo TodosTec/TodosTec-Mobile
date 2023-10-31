@@ -37,12 +37,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="40dp"
-            android:fontFamily="serif"
             android:gravity="center_horizontal"
             android:text="Você está off-line..."
             android:textColor="#000000"
             android:textSize="26dp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/robotobold"
+            />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -58,12 +58,12 @@
             android:layout_marginTop="60dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:fontFamily="serif"
             android:gravity="center_horizontal"
             android:text="Você esta desconectado a internet, verifique a conexão e tente novamente ..."
             android:textColor="@color/black"
             android:textSize="16dp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/robotoregular"
+            />
 
 
     </LinearLayout>

@@ -37,10 +37,12 @@
             android:layout_marginTop="40dp"
             android:textSize="18dp"
             android:text="Nome Completo"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <EditText
-            android:id="@+id/iptDescricaoUsuario"
+            android:id="@+id/iptNome"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="5dp"
@@ -59,7 +61,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <TextView
             android:id="@+id/txtUserName"
@@ -68,10 +72,12 @@
             android:layout_marginTop="40dp"
             android:textSize="18dp"
             android:text="Username"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <EditText
-            android:id="@+id/spOrientacao"
+            android:id="@+id/iptUserName"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="5dp"
@@ -90,7 +96,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <TextView
             android:id="@+id/txtConfirmar"
@@ -99,10 +107,12 @@
             android:layout_marginTop="40dp"
             android:textSize="18dp"
             android:text="Telefone"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <EditText
-            android:id="@+id/spPronome"
+            android:id="@+id/iptTelefone"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="5dp"
@@ -119,7 +129,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <Button
             android:id="@+id/btnContinuar"
@@ -130,7 +142,9 @@
             android:text="Continuar"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null"
+            android:fontFamily="@font/robotomedium"
+            />
 
         <ProgressBar
             android:id="@+id/loadingProgressBar"

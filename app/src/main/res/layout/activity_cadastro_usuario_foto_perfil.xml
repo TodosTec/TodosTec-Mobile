@@ -31,7 +31,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="Selecione um personagem:"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <GridView
             android:id="@+id/gridView"
@@ -53,7 +55,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nenhuma imagem informada!"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <Button
             android:id="@+id/btnContinuar"
@@ -65,7 +69,9 @@
             android:text="Continuar"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null"
+            android:fontFamily="@font/robotomedium"
+            />
 
         <ProgressBar
             android:id="@+id/loadingProgressBar"

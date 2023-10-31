@@ -152,6 +152,7 @@ public class CadastroEmpresaTelefone extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SemFormatacaoTelefone = maskFormatter.RemoveMask();
+                isValid = true;
 
                 if (iptNomeEmpresa.getText().toString().trim().isEmpty()) {
                     txtNomeRestante.setText("Campo Obrigatório");

@@ -48,9 +48,9 @@ public class CadastroUserTelefoneUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_user_telefone_usuario);
 
-        iptNomeCompleto = findViewById(R.id.iptDescricaoUsuario);
-        iptUsername = findViewById(R.id.spOrientacao);
-        iptTelefone = findViewById(R.id.spPronome);
+        iptNomeCompleto = findViewById(R.id.iptNome);
+        iptUsername = findViewById(R.id.iptUserName);
+        iptTelefone = findViewById(R.id.iptTelefone);
         btContinuar = findViewById(R.id.btnContinuar);
 
         txtNomeRestante = findViewById(R.id.txtValidaSenhaUsuario);
@@ -153,16 +153,19 @@ public class CadastroUserTelefoneUsuario extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SemFormatacaoTelefone = maskFormatter.RemoveMask();
+                isValid = true;
 
                 if (iptNomeCompleto.getText().toString().trim().isEmpty()) {
                     txtNomeRestante.setText("Campo Obrigatório");
                     iptNomeCompleto.setBackgroundResource(R.drawable.edittext_background_red);
                     txtNomeRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                     isValid = false;
-                } else {
+                }
+                else {
                     txtNomeRestante.setText("");
                     iptNomeCompleto.setBackgroundResource(R.drawable.edittext_background);
                 }
+
 
                 if (iptUsername.getText().toString().trim().isEmpty()) {
                     txtUsernameRestante.setText("Campo Obrigatório");
@@ -287,7 +290,7 @@ public class CadastroUserTelefoneUsuario extends AppCompatActivity {
             intent.putExtra("ConfirmarSenha", ConfirmarSenha);
             intent.putExtra("NomeCompleto", iptNomeCompleto.getText().toString());
             intent.putExtra("Username", iptUsername.getText().toString());
-            intent.putExtra("Telefone", SemFormatacaoTelefone);
+            intent.putExtra("Telefone", iptTelefone.getText().toString());
             intent.putExtra("SemFormatacaoTelefone", SemFormatacaoTelefone);
             loadingProgressBar.setVisibility(View.INVISIBLE);
             isValidTelefone = false;

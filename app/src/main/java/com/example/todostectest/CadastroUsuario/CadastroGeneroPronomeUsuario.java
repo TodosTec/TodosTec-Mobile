@@ -37,9 +37,9 @@ public class CadastroGeneroPronomeUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_genero_pronome_usuario);
 
-        spinnerOrientacaoSexual = findViewById(R.id.spOrientacao);
+        spinnerOrientacaoSexual = findViewById(R.id.iptUserName);
         spinnerGenero = findViewById(R.id.spGenero);
-        spinnerPronomes = findViewById(R.id.spPronome);
+        spinnerPronomes = findViewById(R.id.iptTelefone);
 
         txtRestante = findViewById(R.id.txtValidaSenhaUsuario);
         txtRestante2 = findViewById(R.id.txtOrientacao);
@@ -128,22 +128,22 @@ public class CadastroGeneroPronomeUsuario extends AppCompatActivity {
         boolean isValid = true;
 
         if (spinnerOrientacaoSexual.getSelectedItemPosition() == 0) {
-            txtRestante.setText("Campo Obrigatório");
-            spinnerOrientacaoSexual.setBackgroundResource(R.drawable.edittext_background_red);
-            txtRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
-            isValid = false;
-        } else {
-            txtRestante.setText("");
-            spinnerOrientacaoSexual.setBackgroundResource(R.drawable.edittext_background);
-        }
-
-        if (spinnerGenero.getSelectedItemPosition() == 0) {
             txtRestante2.setText("Campo Obrigatório");
-            spinnerGenero.setBackgroundResource(R.drawable.edittext_background_red);
+            spinnerOrientacaoSexual.setBackgroundResource(R.drawable.edittext_background_red);
             txtRestante2.setTextColor(getResources().getColor(android.R.color.holo_red_light));
             isValid = false;
         } else {
             txtRestante2.setText("");
+            spinnerOrientacaoSexual.setBackgroundResource(R.drawable.edittext_background);
+        }
+
+        if (spinnerGenero.getSelectedItemPosition() == 0) {
+            txtRestante.setText("Campo Obrigatório");
+            spinnerGenero.setBackgroundResource(R.drawable.edittext_background_red);
+            txtRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+            isValid = false;
+        } else {
+            txtRestante.setText("");
             spinnerGenero.setBackgroundResource(R.drawable.edittext_background);
         }
 

@@ -3,9 +3,11 @@ package com.example.todostectest.CadastroEmpresa;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -86,11 +88,14 @@ public class CadastroEmpresaSMS extends AppCompatActivity {
         btnEnviarSMS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    sendSMS();
-                }
-                catch (Exception ex){
-                    Toast.makeText(CadastroEmpresaSMS.this, codigoAleatorio, Toast.LENGTH_LONG).show();
+                TelephonyManager telMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+                int simState = telMgr.getSimState();
+                switch (simState) {
+                    case TelephonyManager.SIM_STATE_UNKNOWN:
+                        break;
+                    case TelephonyManager.SIM_STATE_READY:
+                        sendSMS();
+                        break;
                 }
             }
         });
