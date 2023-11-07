@@ -38,7 +38,6 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
     TextView txtValidaSenha2;
     TextView txtValidaSenha3;
     TextView txtRestante3;
-    TextView txtCadastroUsuario;
     LinearLayout linearEmail;
     LinearLayout linearSenha;
     LinearLayout linearConfirmar;
@@ -53,7 +52,6 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_email_senha_usuario);
-
 
         //Capturando os inputs da tela
         iptEmail = findViewById(R.id.iptEmailUsuario);
@@ -72,7 +70,6 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
         //Capturando os TextViews
         txtRestante = findViewById(R.id.txtFeedback1);
         txtRestante3 = findViewById(R.id.txtperfil);
-        txtCadastroUsuario = findViewById(R.id.txtCadastroUsuario);
         txtValidaSenha = findViewById(R.id.txtValidaSenhaUsuario);
         txtValidaSenha2 = findViewById(R.id.txtValidaSenhaUsuario2);
         txtValidaSenha3 = findViewById(R.id.txtValidaSenhaUsuario3);
@@ -136,6 +133,7 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
                         linearEmail.setBackgroundResource(R.drawable.edittext_background);
                     } else {
                         txtRestante.setText("Email inválido");
+                        isValid = false;
                         linearEmail.setBackgroundResource(R.drawable.edittext_background_red);
                         txtRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                     }
@@ -212,18 +210,12 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
             }
         });
-
-        txtCadastroUsuario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(CadastroEmailSenhaUsuario.this, CadastroEmailSenhaEmpresa.class);
-                startActivity(intent);
-            }
-        });
     }
 
     public void cadastroOnClick(View view) {
+
         isValid = true;
+
 
         if (iptEmail.getText().toString().trim().isEmpty()) {
             txtRestante.setText("Campo Obrigatório");
@@ -278,10 +270,7 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
             linearConfirmar.setBackgroundResource(R.drawable.edittext_background);
         }
 
-        if (validarSenha(iptSenha)){
-            isValid = true;
-        }
-        else{
+        if (!validarSenha(iptSenha)){
             isValid = false;
         }
 
@@ -325,6 +314,7 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
                         } else {
                             txtRestante.setText("Email já cadastrado");
                             linearEmail.setBackgroundResource(R.drawable.edittext_background_red);
+                            loadingProgressBar.setVisibility(View.INVISIBLE);
                             txtRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                             isValid = false;
                         }
@@ -426,58 +416,5 @@ public class CadastroEmailSenhaUsuario extends AppCompatActivity {
 
     public void VoltarOnClick(View view) {
         finish();
-    }
-
-    public void rotaEmail() {
-        ProgressBar loadingProgressBar = findViewById(R.id.loadingProgressBar);
-        loadingProgressBar.setVisibility(View.VISIBLE);
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api-3wfy.onrender.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        ApiMobile apiService = retrofit.create(ApiMobile.class);
-
-        String email = iptEmail.getText().toString();
-
-        Call<verificaAPI> call = apiService.verificaEmail(email);
-
-        call.enqueue(new Callback<verificaAPI>() {
-            @Override
-            public void onResponse(Call<verificaAPI> call, Response<verificaAPI> response) {
-                if (response.isSuccessful()) {
-                    RespostaAPI = response.body();
-                    if (RespostaAPI.getMensagem().equals("Email liberado")){
-                        isValid = true;
-                    }
-                    else{
-                        txtRestante.setText("Email já cadastrado");
-                        linearEmail.setBackgroundResource(R.drawable.edittext_background_red);
-                        txtRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
-                        isValid = false;
-                    }
-
-                    if (isValid) {
-                        String EmailUsuario = iptEmail.getText().toString();
-                        String SenhaUsuario = iptSenha.getText().toString();
-
-                        Intent intent = new Intent(CadastroEmailSenhaUsuario.this, CadastroEmpresaTelefone.class);
-                        intent.putExtra("EmailUsuario", EmailUsuario);
-                        intent.putExtra("SenhaUsuario", SenhaUsuario);
-                        loadingProgressBar.setVisibility(View.INVISIBLE);
-                        startActivity(intent);
-                    }
-
-                } else {
-                    Toast.makeText(CadastroEmailSenhaUsuario.this, "Erro ao conectar ao servidor: " + response.code(), Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<verificaAPI> call, Throwable t) {
-                Toast.makeText(CadastroEmailSenhaUsuario.this, "Erro ao conectar ao servidor: " + t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
     }
 }

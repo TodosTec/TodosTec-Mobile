@@ -1,6 +1,6 @@
 package com.example.todostectest;
 
-public class Teste {
+public class ManipulaTela {
 
     public static class verificaTela {
         private static boolean telaAberta = false;
@@ -23,7 +23,7 @@ public class Teste {
         }
     }
 
-    public Teste(boolean telaAberta) {
+    public ManipulaTela(boolean telaAberta) {
         verificaTela.telaAberta = telaAberta;
     }
 

@@ -246,6 +246,7 @@ public class CadastroEmpresaTelefone extends AppCompatActivity {
                     else{
                         txtUsernameRestante.setText("Username já cadastrado");
                         iptUsername.setBackgroundResource(R.drawable.edittext_background_red);
+                        loadingProgressBar.setVisibility(View.INVISIBLE);
                         txtUsernameRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                         isValidUser = false;
                     }
@@ -275,6 +276,7 @@ public class CadastroEmpresaTelefone extends AppCompatActivity {
                 else{
                     txtTelefoneRestante.setText("Telefone já cadastrado");
                     iptTelefone.setBackgroundResource(R.drawable.edittext_background_red);
+                    loadingProgressBar.setVisibility(View.INVISIBLE);
                     txtTelefoneRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                     isValidTelefone = false;
                 }

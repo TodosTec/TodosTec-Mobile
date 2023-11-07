@@ -77,6 +77,7 @@ public class CadastroEmpresaLink extends AppCompatActivity {
         btnContinuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                isValid = true;
 
                 if (iptLink.getText().toString().trim().isEmpty()) {
                     txtRestante3.setText("Campo Obrigatório");

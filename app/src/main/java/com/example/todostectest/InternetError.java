@@ -2,10 +2,7 @@ package com.example.todostectest;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.style.UnderlineSpan;
 import android.view.View;
-import android.widget.TextView;
 
 
 public class InternetError extends AppCompatActivity {
@@ -18,8 +15,8 @@ public class InternetError extends AppCompatActivity {
     }
 
     public void VoltarOnClick(View view) {
-        Teste.verificaTela.setTelaAberta(false);
-        Teste.verificaTela.setStoppedRunnable(true);
+        ManipulaTela.verificaTela.setTelaAberta(false);
+        ManipulaTela.verificaTela.setStoppedRunnable(true);
         finish();
     }
 

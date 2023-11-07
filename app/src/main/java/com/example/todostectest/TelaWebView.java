@@ -8,12 +8,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.Toast;
 
 public class TelaWebView extends AppCompatActivity {
     private WebView webView;
@@ -29,7 +27,7 @@ public class TelaWebView extends AppCompatActivity {
         handler = new Handler();
 
         handler.postDelayed(checkInternetRunnable, 10000);
-        Teste.verificaTela.setStoppedRunnable(false);
+        ManipulaTela.verificaTela.setStoppedRunnable(false);
 
         loadWebView();
 
@@ -67,13 +65,13 @@ public class TelaWebView extends AppCompatActivity {
     }
 
     public void carregar() {
-        if (Teste.verificaTela.HasStoppedRunnable())
+        if (ManipulaTela.verificaTela.HasStoppedRunnable())
             return;
 
-        if (Teste.verificaTela.getTelaAberta())
+        if (ManipulaTela.verificaTela.getTelaAberta())
             return;
 
-        Teste.verificaTela.setTelaAberta(true);
+        ManipulaTela.verificaTela.setTelaAberta(true);
         startActivity(new Intent(this, InternetError.class));
         handler.removeCallbacks(checkInternetRunnable);
         finish();
@@ -93,7 +91,7 @@ public class TelaWebView extends AppCompatActivity {
         if (verificaRede()) {
             WebSettings webSettings = webView.getSettings();
             webSettings.setJavaScriptEnabled(true);
-            webView.loadUrl("https://alunos.igerminare.org.br");
+            webView.loadUrl("https://todostech.onrender.com/");
         } else {
             handler.removeCallbacksAndMessages(null);
             carregar();
@@ -106,7 +104,7 @@ public class TelaWebView extends AppCompatActivity {
         if (verificaRede()) {
             WebSettings webSettings = webView.getSettings();
             webSettings.setJavaScriptEnabled(true);
-            webView.loadUrl("https://alunos.igerminare.org.br");
+            webView.loadUrl("https://todostech.onrender.com/");
         } else {
             carregar();
         }

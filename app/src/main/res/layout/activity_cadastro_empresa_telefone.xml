@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:textSize="18dp"
-            android:text="Nome da empresa"
+            android:text="Nome completo da empresa"
             android:textColor="@color/black"
             android:fontFamily="@font/robotoregular"
             />
@@ -106,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:textSize="18dp"
-            android:text="Tefelone"
+            android:text="Telefone"
             android:textColor="@color/black"
             android:fontFamily="@font/robotoregular"
             />
