@@ -28,6 +28,8 @@ public class TelaWebView extends AppCompatActivity {
 
         handler.postDelayed(checkInternetRunnable, 10000);
         ManipulaTela.verificaTela.setStoppedRunnable(false);
+        ManipulaTela.verificaTela.setIsOpenInternetError(false);
+        ManipulaTela.verificaTela.setIsOpen(false);
 
         loadWebView();
 
@@ -72,9 +74,14 @@ public class TelaWebView extends AppCompatActivity {
             return;
 
         ManipulaTela.verificaTela.setTelaAberta(true);
-        startActivity(new Intent(this, InternetError.class));
+        ManipulaTela.verificaTela.setIsOpen(false);
+        Intent intent = new Intent(this, TelaInicial.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        ManipulaTela.verificaTela.setInternetError(true);
+        startActivity(intent);
+        finishAffinity();
         handler.removeCallbacks(checkInternetRunnable);
-        finish();
+
     }
 
     // Runnable para verificar a conectividade à internet periodicamente
@@ -89,22 +96,31 @@ public class TelaWebView extends AppCompatActivity {
 
     private void loadWebView() {
         if (verificaRede()) {
+            if(!ManipulaTela.verificaTela.getIsOpen()){
             WebSettings webSettings = webView.getSettings();
             webSettings.setJavaScriptEnabled(true);
-            webView.loadUrl("https://todostech.onrender.com/");
+            webSettings.setDomStorageEnabled(true);
+            webView.loadUrl("https://mude.onrender.com/");
+            ManipulaTela.verificaTela.setIsOpen(true);
+            }
         } else {
             handler.removeCallbacksAndMessages(null);
             carregar();
         }
     }
 
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if (verificaRede()) {
-            WebSettings webSettings = webView.getSettings();
-            webSettings.setJavaScriptEnabled(true);
-            webView.loadUrl("https://todostech.onrender.com/");
+            if(!ManipulaTela.verificaTela.getIsOpen()){
+                WebSettings webSettings = webView.getSettings();
+                webSettings.setJavaScriptEnabled(true);
+                webSettings.setDomStorageEnabled(true);
+                webView.loadUrl("https://mude.onrender.com/");
+                ManipulaTela.verificaTela.setIsOpen(true);
+            }
         } else {
             carregar();
         }
