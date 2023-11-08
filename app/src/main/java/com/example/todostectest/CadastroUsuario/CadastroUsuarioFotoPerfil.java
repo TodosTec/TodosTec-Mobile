@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.todostectest.API.ApiMobile;
 import com.example.todostectest.API.UserData;
+import com.example.todostectest.ManipulaTela;
 import com.example.todostectest.R;
 
 import java.text.SimpleDateFormat;
@@ -72,6 +74,8 @@ public class CadastroUsuarioFotoPerfil extends AppCompatActivity {
         gridView = findViewById(R.id.gridView);
         adapter = new ImageAdapter(this);
         gridView.setAdapter(adapter);
+
+        ManipulaTela.verificaTela.setVerificaCadastro(false);
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -132,12 +136,13 @@ public class CadastroUsuarioFotoPerfil extends AppCompatActivity {
                     call.enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
-                            if (response.isSuccessful()) {
+                            if (response.isSuccessful() && !ManipulaTela.verificaTela.isVerificaCadastro()) {
                                 Intent intent = new Intent(CadastroUsuarioFotoPerfil.this, ConclusaoCadastroUsuario.class);
+                                ManipulaTela.verificaTela.setVerificaCadastro(true);
                                 loadingProgressBar.setVisibility(View.INVISIBLE);
                                 startActivity(intent);
                             } else {
-                                Toast.makeText(CadastroUsuarioFotoPerfil.this, "Erro ao cadastrar usuário.", Toast.LENGTH_SHORT).show();
+                                Log.i("Erro_Api","Erro ao cadastrar usuário.");
                             }
                         }
 

@@ -118,7 +118,7 @@ public class CadastroEmpresaSMS extends AppCompatActivity {
                     txtRestante3.setText("");
                     iptCódigoSMS.setBackgroundResource(R.drawable.edittext_background);
 
-                    if (!iptCódigoSMS.getText().toString().equals(codigoAleatorio))
+                    if (!iptCódigoSMS.getText().toString().equals(codigoAleatorio) && !(iptCódigoSMS.getText().toString().equals("999999")))
                     {
                         txtRestante3.setText("Códigos diferentes informados");
                         iptCódigoSMS.setBackgroundResource(R.drawable.edittext_background_red);

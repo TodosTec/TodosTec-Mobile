@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.todostectest.CadastroUsuario.ConclusaoCadastroUsuario;
+import com.example.todostectest.ManipulaTela;
 import com.example.todostectest.R;
 import com.example.todostectest.TelaInicial;
 
@@ -16,6 +17,7 @@ public class ConclusaoCadastroEmpresa extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conclusao_cadastro_empresa);
+        ManipulaTela.verificaTela.setVerificaCadastro(false);
     }
 
     public void cadastroOnClick(View view){

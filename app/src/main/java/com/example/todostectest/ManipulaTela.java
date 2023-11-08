@@ -8,6 +8,15 @@ public class ManipulaTela {
         private static boolean isOpen = false;
         private static boolean internetError = false;
         private static boolean isOpenInternetError = false;
+        private static boolean verificaCadastro = false;
+
+        public static boolean isVerificaCadastro() {
+            return verificaCadastro;
+        }
+
+        public static void setVerificaCadastro(boolean verificaCadastro) {
+            verificaTela.verificaCadastro = verificaCadastro;
+        }
 
         public static boolean isIsOpenInternetError() {
             return isOpenInternetError;
