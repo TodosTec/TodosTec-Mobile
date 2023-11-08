@@ -182,21 +182,21 @@ public class CadastroGeneroPronomeUsuario extends AppCompatActivity {
     }
 
     private void setupSpinnerOrientacaoSexual() {
-        String[] orientacoesSexuais = {"Selecione...", "Heterossexual", "Homossexual", "Bissexual", "Outro"};
+        String[] orientacoesSexuais = {"Selecione...", "Heterossexual", "Gay", "Bissexual", "Pansexual", "Assexual", "Lésbica"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, orientacoesSexuais);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerOrientacaoSexual.setAdapter(adapter);
     }
 
     private void setupSpinnerGenero() {
-        String[] generos = {"Selecione...", "Masculino", "Feminino", "Outro"};
+        String[] generos = {"Selecione...", "Masculino", "Feminino", "Não Binário", "Gênero Fluído", "Bigênero","Pangênero", "Agênero"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, generos);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerGenero.setAdapter(adapter);
     }
 
     private void setupSpinnerPronomes() {
-        String[] pronomes = {"Selecione...", "Ele", "Ela", "Outro"};
+        String[] pronomes = {"Selecione...", "Ela/Dela", "Ele/Dele", "Elu/Delu", "Ile/Dile"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, pronomes);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerPronomes.setAdapter(adapter);

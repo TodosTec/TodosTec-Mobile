@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,7 @@ import com.example.todostectest.API.CompanyData;
 import com.example.todostectest.API.UserData;
 import com.example.todostectest.CadastroUsuario.CadastroDescricaoUsuario;
 import com.example.todostectest.CadastroUsuario.ConclusaoCadastroUsuario;
+import com.example.todostectest.ManipulaTela;
 import com.example.todostectest.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -59,6 +61,7 @@ public class CadastroEmpresaDescricao extends AppCompatActivity {
         Telefone = intent.getStringExtra("Telefone");
         Link = intent.getStringExtra("Link");
 
+        ManipulaTela.verificaTela.setVerificaCadastro(false);
 
         iptDescricao.addTextChangedListener(new TextWatcher() {
             @Override
@@ -126,27 +129,14 @@ public class CadastroEmpresaDescricao extends AppCompatActivity {
                     call.enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
-                            if (response.isSuccessful()) {
-
-                                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                DatabaseReference myRef = database.getReference();
-
-                                DatabaseReference key = myRef.child("CadastroEmpresaLog").push();
-
-                                key.child("nome").setValue(NomeCompleto);
-                                key.child("usuário").setValue(Username);
-                                key.child("email").setValue(EmailUsuario);
-
-                                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-                                String dataAtual = dateFormat.format(new Date());
-
-                                key.child("dataCadastro").setValue(dataAtual);
+                            if (response.isSuccessful() && !ManipulaTela.verificaTela.isVerificaCadastro()) {
 
                                 Intent intent = new Intent(CadastroEmpresaDescricao.this, ConclusaoCadastroEmpresa.class);
                                 loadingProgressBar.setVisibility(View.INVISIBLE);
+                                ManipulaTela.verificaTela.setVerificaCadastro(true);
                                 startActivity(intent);
                             } else {
-                                Toast.makeText(CadastroEmpresaDescricao.this, "Erro ao cadastrar usuário.", Toast.LENGTH_SHORT).show();
+                                Log.i("Erro_Api","Erro ao cadastrar usuário.");
                             }
                         }
 
