@@ -164,7 +164,7 @@ public class ValidaSMSUsuario extends AppCompatActivity {
             PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
             SmsManager sms = SmsManager.getDefault();
-//            sms.sendTextMessage("997427422", null, "Olá! Seu código de validação para o aplicativo TodosTec é: " + codigoAleatorio, pi, null);
+            sms.sendTextMessage("997427422", null, "Olá! Seu código de validação para o aplicativo TodosTec é: " + codigoAleatorio, pi, null);
     }
 
 

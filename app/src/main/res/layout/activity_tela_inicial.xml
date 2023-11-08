@@ -57,7 +57,7 @@
             />
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnUsuario"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:layout_marginLeft="80dp"
@@ -73,7 +73,7 @@
             />
 
         <Button
-            android:id="@+id/btnCadastro"
+            android:id="@+id/btnEmpresa"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:layout_marginLeft="80dp"

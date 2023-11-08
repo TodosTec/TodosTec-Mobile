@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:textSize="18dp"
-            android:text="Nome Completo"
+            android:text="Nome completo do usuário"
             android:textColor="@color/black"
             android:fontFamily="@font/robotoregular"
             />

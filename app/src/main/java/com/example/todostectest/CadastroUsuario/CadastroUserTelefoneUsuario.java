@@ -197,6 +197,16 @@ public class CadastroUserTelefoneUsuario extends AppCompatActivity {
                     txtUsernameRestante.setText("");
                     iptUsername.setBackgroundResource(R.drawable.edittext_background);
                 }
+                if (!maskFormatter.isMaskMatching()){
+                    txtTelefoneRestante.setText("Telefone Inválido");
+                    isValid = false;
+                    iptTelefone.setBackgroundResource(R.drawable.edittext_background_red);
+                    txtTelefoneRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                }
+                else{
+                    txtTelefoneRestante.setText("");
+                    iptTelefone.setBackgroundResource(R.drawable.edittext_background);
+                }
                 if (isValid) {
                     rotaUserNameTelefone();
                 }
@@ -240,6 +250,7 @@ public class CadastroUserTelefoneUsuario extends AppCompatActivity {
                         txtUsernameRestante.setText("Username já cadastrado");
                         iptUsername.setBackgroundResource(R.drawable.edittext_background_red);
                         txtUsernameRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                        loadingProgressBar.setVisibility(View.INVISIBLE);
                         isValidUser = false;
                     }
                 } else {
@@ -269,6 +280,7 @@ public class CadastroUserTelefoneUsuario extends AppCompatActivity {
                     txtTelefoneRestante.setText("Telefone já cadastrado");
                     iptTelefone.setBackgroundResource(R.drawable.edittext_background_red);
                     txtTelefoneRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                    loadingProgressBar.setVisibility(View.INVISIBLE);
                     isValidTelefone = false;
                 }
             }

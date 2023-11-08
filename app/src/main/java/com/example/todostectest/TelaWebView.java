@@ -8,12 +8,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.Toast;
 
 public class TelaWebView extends AppCompatActivity {
     private WebView webView;
@@ -29,7 +27,9 @@ public class TelaWebView extends AppCompatActivity {
         handler = new Handler();
 
         handler.postDelayed(checkInternetRunnable, 10000);
-        Teste.verificaTela.setStoppedRunnable(false);
+        ManipulaTela.verificaTela.setStoppedRunnable(false);
+        ManipulaTela.verificaTela.setIsOpenInternetError(false);
+        ManipulaTela.verificaTela.setIsOpen(false);
 
         loadWebView();
 
@@ -67,16 +67,21 @@ public class TelaWebView extends AppCompatActivity {
     }
 
     public void carregar() {
-        if (Teste.verificaTela.HasStoppedRunnable())
+        if (ManipulaTela.verificaTela.HasStoppedRunnable())
             return;
 
-        if (Teste.verificaTela.getTelaAberta())
+        if (ManipulaTela.verificaTela.getTelaAberta())
             return;
 
-        Teste.verificaTela.setTelaAberta(true);
-        startActivity(new Intent(this, InternetError.class));
+        ManipulaTela.verificaTela.setTelaAberta(true);
+        ManipulaTela.verificaTela.setIsOpen(false);
+        Intent intent = new Intent(this, TelaInicial.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        ManipulaTela.verificaTela.setInternetError(true);
+        startActivity(intent);
+        finishAffinity();
         handler.removeCallbacks(checkInternetRunnable);
-        finish();
+
     }
 
     // Runnable para verificar a conectividade à internet periodicamente
@@ -91,22 +96,31 @@ public class TelaWebView extends AppCompatActivity {
 
     private void loadWebView() {
         if (verificaRede()) {
+            if(!ManipulaTela.verificaTela.getIsOpen()){
             WebSettings webSettings = webView.getSettings();
             webSettings.setJavaScriptEnabled(true);
-            webView.loadUrl("https://alunos.igerminare.org.br");
+            webSettings.setDomStorageEnabled(true);
+            webView.loadUrl("https://mude.onrender.com/");
+            ManipulaTela.verificaTela.setIsOpen(true);
+            }
         } else {
             handler.removeCallbacksAndMessages(null);
             carregar();
         }
     }
 
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if (verificaRede()) {
-            WebSettings webSettings = webView.getSettings();
-            webSettings.setJavaScriptEnabled(true);
-            webView.loadUrl("https://alunos.igerminare.org.br");
+            if(!ManipulaTela.verificaTela.getIsOpen()){
+                WebSettings webSettings = webView.getSettings();
+                webSettings.setJavaScriptEnabled(true);
+                webSettings.setDomStorageEnabled(true);
+                webView.loadUrl("https://mude.onrender.com/");
+                ManipulaTela.verificaTela.setIsOpen(true);
+            }
         } else {
             carregar();
         }

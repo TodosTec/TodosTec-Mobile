@@ -40,11 +40,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:textSize="18dp"
-            android:text="Email"
-            android:textColor="@color/black"
             android:fontFamily="@font/robotoregular"
-            />
+            android:text="Email do usuário"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
 
         <LinearLayout
             android:id="@+id/linearEmail"
@@ -216,21 +215,11 @@
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF" />
 
-        <TextView
-            android:id="@+id/txtCadastroUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:textSize="18dp"
-            android:gravity="center"
-            android:text="Quer cadastrar uma empresa? Entre agora!"
-            android:textColor="@color/black" />
-
         <Button
             android:id="@+id/btnContinuar"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="120dp"
             android:background="@drawable/rounded_button"
             android:onClick="cadastroOnClick"
             android:text="Continuar"

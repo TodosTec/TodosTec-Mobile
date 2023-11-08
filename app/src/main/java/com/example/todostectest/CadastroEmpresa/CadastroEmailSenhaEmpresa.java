@@ -133,6 +133,7 @@ public class CadastroEmailSenhaEmpresa extends AppCompatActivity {
                         linearEmail.setBackgroundResource(R.drawable.edittext_background);
                     } else {
                         txtRestante.setText("Email inválido");
+                        isValid = false;
                         linearEmail.setBackgroundResource(R.drawable.edittext_background_red);
                         txtRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                     }
@@ -213,7 +214,9 @@ public class CadastroEmailSenhaEmpresa extends AppCompatActivity {
     }
 
     public void cadastroOnClick(View view) {
+
         isValid = true;
+
 
         if (iptEmail.getText().toString().trim().isEmpty()) {
             txtRestante.setText("Campo Obrigatório");
@@ -268,10 +271,7 @@ public class CadastroEmailSenhaEmpresa extends AppCompatActivity {
             linearConfirmar.setBackgroundResource(R.drawable.edittext_background);
         }
 
-        if (validarSenha(iptSenha)){
-            isValid = true;
-        }
-        else{
+        if (!validarSenha(iptSenha)){
             isValid = false;
         }
 
@@ -315,6 +315,7 @@ public class CadastroEmailSenhaEmpresa extends AppCompatActivity {
                         } else {
                             txtRestante.setText("Email já cadastrado");
                             linearEmail.setBackgroundResource(R.drawable.edittext_background_red);
+                            loadingProgressBar.setVisibility(View.INVISIBLE);
                             txtRestante.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                             isValid = false;
                         }

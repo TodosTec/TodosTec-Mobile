@@ -37,11 +37,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:textSize="18dp"
-                android:text="Email"
-                android:textColor="@color/black"
                 android:fontFamily="@font/robotoregular"
-                />
+                android:text="Email da empresa"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
 
             <LinearLayout
                 android:id="@+id/linearEmail"
