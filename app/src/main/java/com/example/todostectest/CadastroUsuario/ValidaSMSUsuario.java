@@ -64,8 +64,6 @@ public class ValidaSMSUsuario extends AppCompatActivity {
 
         codigoAleatorio = gerarCodigoAleatorio(6);
 
-        Toast.makeText(ValidaSMSUsuario.this, "Número de telefone: " + Telefone, Toast.LENGTH_LONG).show();
-
         iptCódigoSMS.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -164,7 +162,7 @@ public class ValidaSMSUsuario extends AppCompatActivity {
             PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
             SmsManager sms = SmsManager.getDefault();
-            sms.sendTextMessage("997427422", null, "Olá! Seu código de validação para o aplicativo TodosTec é: " + codigoAleatorio, pi, null);
+            sms.sendTextMessage(SemFormatacaoTelefone, null, "Olá! Seu código de validação para o aplicativo TodosTec é: " + codigoAleatorio, pi, null);
     }
 
 

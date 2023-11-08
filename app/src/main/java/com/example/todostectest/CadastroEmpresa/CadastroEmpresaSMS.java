@@ -52,13 +52,16 @@ public class CadastroEmpresaSMS extends AppCompatActivity {
         NomeCompleto = intent.getStringExtra("NomeCompleto");
         Username = intent.getStringExtra("Username");
         Telefone = intent.getStringExtra("Telefone");
-        SemFormatacaoTelefone = intent.getStringExtra("SemFormatacaoTelefone").substring(2);
+        SemFormatacaoTelefone = intent.getStringExtra("SemFormatacaoTelefone");
+        if (SemFormatacaoTelefone != null) {
+            SemFormatacaoTelefone = SemFormatacaoTelefone.substring(2);
+        } else {
+
+        }
 
         txtSMS.setText("Foi enviado nesse numero de telefone:" + Telefone + " um código de SMS para verificar seu telefone. Insira-o no campo abaixo:");
 
         codigoAleatorio = gerarCodigoAleatorio(6);
-
-        Toast.makeText(CadastroEmpresaSMS.this, "Número de telefone: " + Telefone, Toast.LENGTH_LONG).show();
 
         iptCódigoSMS.addTextChangedListener(new TextWatcher() {
             @Override
