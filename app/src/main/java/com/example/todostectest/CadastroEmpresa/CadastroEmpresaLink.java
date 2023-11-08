@@ -30,6 +30,8 @@ public class CadastroEmpresaLink extends AppCompatActivity {
     String Username;
     String Telefone;
 
+    boolean isValid = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,8 +56,9 @@ public class CadastroEmpresaLink extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (iptLink.getText().toString().isEmpty()) {
+                if (iptLink.getText().toString().trim().isEmpty()) {
                     txtRestante3.setText("Campo Obrigatório");
+                    isValid = false;
                     iptLink.setBackgroundResource(R.drawable.edittext_background_red);
                     txtRestante3.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                 } else {
@@ -74,13 +77,13 @@ public class CadastroEmpresaLink extends AppCompatActivity {
         btnContinuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean isValid = true;
+                isValid = true;
 
-                if (iptLink.getText().toString().isEmpty()) {
+                if (iptLink.getText().toString().trim().isEmpty()) {
                     txtRestante3.setText("Campo Obrigatório");
+                    isValid = false;
                     iptLink.setBackgroundResource(R.drawable.edittext_background_red);
                     txtRestante3.setTextColor(getResources().getColor(android.R.color.holo_red_light));
-                    isValid = false;
                 } else {
                     txtRestante3.setText("");
                     iptLink.setBackgroundResource(R.drawable.edittext_background);

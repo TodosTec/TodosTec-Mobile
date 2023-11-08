@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
- <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".TelaInicial">
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/txtEntreConta"
@@ -25,7 +30,7 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="56dp"
             app:srcCompat="@drawable/logotec" />
 
         <TextView
@@ -35,7 +40,9 @@
             android:gravity="center"
             android:text="Boas Vindas"
             android:textColor="@color/black"
-            android:textSize="48dp" />
+            android:textSize="48dp"
+            android:fontFamily="@font/robotomedium"
+            />
 
         <TextView
             android:id="@+id/textView4"
@@ -45,10 +52,12 @@
             android:gravity="center"
             android:text="O que você deseja realizar?"
             android:textColor="@color/black"
-            android:textSize="24dp" />
+            android:textSize="24dp"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnUsuario"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:layout_marginLeft="80dp"
@@ -59,10 +68,12 @@
             android:text="LOGIN"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null"
+            android:fontFamily="@font/robotomedium"
+            />
 
         <Button
-            android:id="@+id/btnCadastro"
+            android:id="@+id/btnEmpresa"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:layout_marginLeft="80dp"
@@ -71,10 +82,11 @@
             android:text="CADASTRE-SE"
             android:textColor="@color/black"
             android:textSize="18sp"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null"
+            android:fontFamily="@font/robotomedium"
+            />
 
 
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

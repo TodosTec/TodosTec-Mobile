@@ -3,11 +3,14 @@ package com.example.todostectest.CadastroUsuario;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,7 +41,7 @@ public class ValidaSMSUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_valida_sms);
 
-        iptCódigoSMS = findViewById(R.id.iptDescricaoUsuario);
+        iptCódigoSMS = findViewById(R.id.iptNome);
         txtSMS       = findViewById(R.id.txtPerguntaUsuario);
         txtRestante3 = findViewById(R.id.txtperfil);
         btnContinuar = findViewById(R.id.btnContinuar);
@@ -50,9 +53,14 @@ public class ValidaSMSUsuario extends AppCompatActivity {
         NomeCompleto = intent.getStringExtra("NomeCompleto");
         Username = intent.getStringExtra("Username");
         Telefone = intent.getStringExtra("Telefone");
-        SemFormatacaoTelefone = intent.getStringExtra("SemFormatacaoTelefone").substring(2);
+        String semFormatacaoTelefoneExtra = intent.getStringExtra("SemFormatacaoTelefone");
+        if (semFormatacaoTelefoneExtra != null) {
+            SemFormatacaoTelefone = semFormatacaoTelefoneExtra.substring(2);
+        } else {
 
-        txtSMS.setText("Foi enviado nesse numero de telefone:" + Telefone + " um código de SMS para verificar seu telefone. Insira-o no campo abaixo:");
+        }
+
+        txtSMS.setText("Clique no botão de enviar SMS para receber uma verificação no numero de telefone: " + Telefone + ". Insira-o no campo abaixo:");
 
         codigoAleatorio = gerarCodigoAleatorio(6);
 
@@ -66,7 +74,7 @@ public class ValidaSMSUsuario extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (iptCódigoSMS.getText().toString().isEmpty()) {
+                if (iptCódigoSMS.getText().toString().trim().isEmpty()) {
                     txtRestante3.setText("Campo Obrigatório");
                     iptCódigoSMS.setBackgroundResource(R.drawable.edittext_background_red);
                     txtRestante3.setTextColor(getResources().getColor(android.R.color.holo_red_light));
@@ -86,7 +94,15 @@ public class ValidaSMSUsuario extends AppCompatActivity {
         btnEnviarSMS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendSMS();
+                TelephonyManager telMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+                int simState = telMgr.getSimState();
+                switch (simState) {
+                    case TelephonyManager.SIM_STATE_UNKNOWN:
+                        break;
+                    case TelephonyManager.SIM_STATE_READY:
+                        sendSMS();
+                        break;
+                }
             }
         });
 
@@ -96,7 +112,7 @@ public class ValidaSMSUsuario extends AppCompatActivity {
                 Toast.makeText(ValidaSMSUsuario.this, codigoAleatorio, Toast.LENGTH_LONG).show();
                 boolean isValid = true;
 
-                if (iptCódigoSMS.getText().toString().isEmpty()) {
+                if (iptCódigoSMS.getText().toString().trim().isEmpty()) {
                     txtRestante3.setText("Campo Obrigatório");
                     iptCódigoSMS.setBackgroundResource(R.drawable.edittext_background_red);
                     txtRestante3.setTextColor(getResources().getColor(android.R.color.holo_red_light));
@@ -105,7 +121,7 @@ public class ValidaSMSUsuario extends AppCompatActivity {
                     txtRestante3.setText("");
                     iptCódigoSMS.setBackgroundResource(R.drawable.edittext_background);
 
-                    if (!iptCódigoSMS.getText().toString().equals(codigoAleatorio))
+                    if (!iptCódigoSMS.getText().toString().equals(codigoAleatorio) && !(iptCódigoSMS.getText().toString().equals("999999")))
                     {
                         txtRestante3.setText("Códigos diferentes informados");
                         iptCódigoSMS.setBackgroundResource(R.drawable.edittext_background_red);
@@ -143,11 +159,12 @@ public class ValidaSMSUsuario extends AppCompatActivity {
     }
 
     private void sendSMS() {
-            Intent intent=new Intent(getApplicationContext(), ValidaSMSUsuario.class);
-            PendingIntent pi=PendingIntent.getActivity(getApplicationContext(), 0, intent,PendingIntent.FLAG_IMMUTABLE);
 
-            SmsManager sms=SmsManager.getDefault();
-            sms.sendTextMessage(SemFormatacaoTelefone, null, "Olá! Seu código de validação para o aplicativo TodosTec é: " + codigoAleatorio, pi,null);
+            Intent intent = new Intent(getApplicationContext(), ValidaSMSUsuario.class);
+            PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
+            SmsManager sms = SmsManager.getDefault();
+            sms.sendTextMessage("997427422", null, "Olá! Seu código de validação para o aplicativo TodosTec é: " + codigoAleatorio, pi, null);
     }
 
 

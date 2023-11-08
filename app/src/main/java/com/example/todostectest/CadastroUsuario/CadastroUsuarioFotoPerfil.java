@@ -12,14 +12,13 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.todostectest.API.ApiMobile;
 import com.example.todostectest.API.UserData;
 import com.example.todostectest.R;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -103,9 +102,11 @@ public class CadastroUsuarioFotoPerfil extends AppCompatActivity {
         btnContinuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean isValid = true;
 
                 if (isValid) {
+                    ProgressBar loadingProgressBar = findViewById(R.id.loadingProgressBar);
+                    loadingProgressBar.setVisibility(View.VISIBLE);
+
                     UserData userData = new UserData(
                             NomeCompleto,
                             Username,
@@ -132,22 +133,8 @@ public class CadastroUsuarioFotoPerfil extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
                             if (response.isSuccessful()) {
-
-                                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                DatabaseReference myRef = database.getReference();
-
-                                DatabaseReference key = myRef.child("CadastroUsuárioLog").push();
-
-                                key.child("nome").setValue(NomeCompleto);
-                                key.child("usuário").setValue(Username);
-                                key.child("email").setValue(EmailUsuario);
-
-                                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-                                String dataAtual = dateFormat.format(new Date());
-
-                                key.child("dataCadastro").setValue(dataAtual);
-
                                 Intent intent = new Intent(CadastroUsuarioFotoPerfil.this, ConclusaoCadastroUsuario.class);
+                                loadingProgressBar.setVisibility(View.INVISIBLE);
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(CadastroUsuarioFotoPerfil.this, "Erro ao cadastrar usuário.", Toast.LENGTH_SHORT).show();

@@ -9,20 +9,18 @@
 
     <LinearLayout
         android:id="@+id/txtEntreConta"
-        android:layout_width="300dp"
+        android:layout_width="450dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imgLogo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             app:srcCompat="@drawable/logotec" />
@@ -32,26 +30,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:shadowDx="0"
-            android:shadowDy="1"
-            android:shadowRadius="3"
             android:text="Selecione um personagem:"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <GridView
             android:id="@+id/gridView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:numColumns="3"
-            android:stretchMode="columnWidth"
             android:background="@drawable/gridview_background"
-            android:padding="16dp"
-            app:layout_constraintTop_toBottomOf="@id/txtFotoPerfil"
+            android:gravity="center"
+            android:numColumns="3"
+            android:padding="8dp"
             app:layout_constraintBottom_toTopOf="@id/txtperfil"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="0.5"
-            app:layout_constraintHorizontal_bias="0.5" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtFotoPerfil" />
 
 
         <TextView
@@ -59,19 +55,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nenhuma imagem informada!"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/robotoregular"
+            />
 
         <Button
             android:id="@+id/btnContinuar"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginVertical="100dp"
+            android:layout_marginTop="100dp"
             android:background="@drawable/rounded_button"
             android:onClick="cadastroOnClick"
             android:text="Continuar"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null"
+            android:fontFamily="@font/robotomedium"
+            />
+
+        <ProgressBar
+            android:id="@+id/loadingProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:visibility="invisible"
+            android:indeterminateDrawable="@drawable/progress_bg"
+            android:backgroundTint="@color/black"
+            />
 
 
     </LinearLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,9 +8,13 @@
     android:background="@color/white"
     tools:context=".CadastroUsuario.CadastroEmailSenhaUsuario">
 
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <LinearLayout
         android:id="@+id/txtEntreConta"
-        android:layout_width="400dp"
+        android:layout_width="450dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,12 +37,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="40dp"
-            android:fontFamily="serif"
             android:gravity="center_horizontal"
             android:text="Você está off-line..."
             android:textColor="#000000"
             android:textSize="26dp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/robotobold"
+            />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -53,12 +58,12 @@
             android:layout_marginTop="60dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:fontFamily="serif"
             android:gravity="center_horizontal"
             android:text="Você esta desconectado a internet, verifique a conexão e tente novamente ..."
             android:textColor="@color/black"
             android:textSize="16dp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/robotoregular"
+            />
 
 
     </LinearLayout>
@@ -74,6 +79,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.072"
-        app:srcCompat="@drawable/voltar_seta" />
+        app:srcCompat="@drawable/baseline_close_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
